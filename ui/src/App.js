@@ -1,69 +1,46 @@
 import logo from './logo.svg';
 import './App.css';
-import { Component } from 'react';
-class App extends Component{
+import {Home} from './Home';
+import {Department} from './Department';
+import {Employee} from './Employee';
+import {BrowserRouter, Route, Routes,NavLink} from 'react-router-dom';
 
-  constructor(props){
-    super(props);
-    this.state={
-      notes:[]
-    }
-  }
-
-API_URL="http://localhost:5049/";
-
-componentDidMount(){
-  this.refreshNotes();
-}
-
-async refreshNotes(){
-  fetch(this.API_URL+"api/todoapp/GetNotes").then(response=>response.json())
-  .then(data=>{
-    this.setState({notes:data});
-  })
-}
-
-async addClick(){
-  var newNotes=document.getElementById("newNotes").value;
-  const data=new FormData();
-  data.append("newNotes", newNotes);
-
-  fetch(this.API_URL+"api/todoapp/AddNotes", {
-    method: "POST",
-    body: data
-  }).then(res=>res.json())
-  .then((result)=>{
-    alert(result);
-    this.refreshNotes();
-  })
-}
-
-async deleteClick(id){
-  fetch(this.API_URL+"api/todoapp/DeleteNotes?id="+id, {
-    method: "DELETE",
-  }).then(res=>res.json())
-  .then((result)=>{
-    alert(result);
-    this.refreshNotes();
-  })
-}
-
-
-render() {
-  const{notes}=this.state;
+function App() {
   return (
-    <div className="App">
-      <h2>Todo App</h2>
-        <input id ="newNotes"/>&nbsp;
-        <button onClick={()=>this.addClick()}>Add Notes</button>
-      {notes.map(note=>
-        <p>
-          <b>* {note.description}</b>&nbsp;
-          <button onClick={()=>this.deleteClick(note.id)}>Delete Notes</button>
-        </p>)}
+    <BrowserRouter>
+    <div className="App container">
+      <h3 className="d-flex justify-content-center m-3">
+        React JS Frontend
+      </h3>
+        
+      <nav className="navbar navbar-expand-sm bg-light navbar-dark">
+        <ul className="navbar-nav">
+          <li className="nav-item- m-1">
+            <NavLink className="btn btn-light btn-outline-primary" to="/home">
+              Home
+            </NavLink>
+          </li>
+          <li className="nav-item- m-1">
+            <NavLink className="btn btn-light btn-outline-primary" to="/department">
+              Department
+            </NavLink>
+          </li>
+          <li className="nav-item- m-1">
+            <NavLink className="btn btn-light btn-outline-primary" to="/employee">
+              Employee
+            </NavLink>
+          </li>
+        </ul>
+      </nav>
+
+      <Routes>
+        <Route path='/home' element={<Home/>}/>
+        <Route path='/department' element={<Department/>}/>
+        <Route path='/employee' element={<Employee/>}/>
+      </Routes>
     </div>
+    </BrowserRouter>
   );
-}
 }
 
 export default App;
