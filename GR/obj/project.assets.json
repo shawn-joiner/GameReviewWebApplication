@@ -1129,11 +1129,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\E\\Desktop\\GR\\GR\\GR.csproj",
+      "projectUniqueName": "C:\\Users\\E\\Documents\\GitHub\\2023_F_Shawn\\GR\\GR.csproj",
       "projectName": "GR",
-      "projectPath": "C:\\Users\\E\\Desktop\\GR\\GR\\GR.csproj",
+      "projectPath": "C:\\Users\\E\\Documents\\GitHub\\2023_F_Shawn\\GR\\GR.csproj",
       "packagesPath": "C:\\Users\\E\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\E\\Desktop\\GR\\GR\\obj\\",
+      "outputPath": "C:\\Users\\E\\Documents\\GitHub\\2023_F_Shawn\\GR\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\E\\AppData\\Roaming\\NuGet\\NuGet.Config",
