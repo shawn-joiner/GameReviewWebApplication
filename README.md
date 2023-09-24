@@ -2,7 +2,8 @@
 
 # Project Summary
 
-A game review web application that will allow users post reviews and view other user's reviews.
+A game review web application that will allow users to post reviews and view other user's reviews. As opposed to providing a single overall score for a game,
+when writing a review is prompted for an overall text submission as well as a score in each of five categories including gameplay, presentation, engagement, difficulty, and replayability.
 
 ### Team Members
 - Shawn Joiner    | Team Lead    | 495
@@ -22,7 +23,7 @@ A game review web application that will allow users post reviews and view other 
   - GitHub Desktop
     - Install GitHub Desktop and sign into your GitHub account.
     - Click on the current repository tab (top left under menu bar)
-    - Select add, clone repository, and choose FranklinCSPracticum/2203_F_Shawn
+    - Select add, clone repository, and choose FranklinCSPracticum/2023_F_Shawn
    
 ### DB Setup
  - Run SSMS 
