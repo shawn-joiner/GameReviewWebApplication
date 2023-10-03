@@ -31,9 +31,9 @@ namespace GR.Models
         public int Replayable { get; set; }
 
         [DataType(DataType.Date)]
-        public DateTime Created { get; set; }
+        public DateTime DateCreated { get; set; }
 
-    }
+    }//Game, User, ReviewTitle, Review, GamePlay, Presentation, Engagement, Difficulty, Replayable, DateCreated
 }
 
 

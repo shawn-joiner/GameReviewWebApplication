@@ -10,9 +10,9 @@ namespace GR.Models
         public int GenreID { get; set; }
 
         [Required(ErrorMessage = "Title is required")]
-        public string GameTitle { get; set; }
+        public string Game { get; set; }
 
-        public TextWriter? GameBlurb { get; set; }
+        public TextWriter? Blurb { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime ReleaseDate { get; set; }

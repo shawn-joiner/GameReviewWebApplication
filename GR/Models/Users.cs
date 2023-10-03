@@ -15,7 +15,7 @@ namespace GR.Models
         [Required]
         public string Email { get; set; }
 
-        public TextReader? Bio { get; set; }
+        public string? Bio { get; set; }
 
         public string? UserPicture { get; set; }
 
