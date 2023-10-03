@@ -1,0 +1,72 @@
+create table Users (
+	id int primary key identity (1,1),
+	username nvarchar(255) unique,
+	[password] nvarchar(255),
+	email nvarchar(255),
+	bio nvarchar(MAX),
+	joined date default getdate(),
+	picture nvarchar(255) default 'anonymous.png'
+)
+
+create table Genre (
+	id int primary key identity (1,1),
+	name nvarchar(255)
+)
+
+create table Games (
+	id int primary key identity (1,1),
+	genre_Id int foreign key references Genre(id),
+	title nvarchar(255),
+	blurb nvarchar(MAX),
+	release date,
+	developer nvarchar(255),
+	publisher nvarchar(255),
+	image nvarchar(255) default 'noImage.png'
+)
+
+create table Reviews (
+	id int primary key identity (1,1),
+	game_Id int foreign key references Games(id),
+	appUser_Id int foreign key references Users(id),
+	title nvarchar(255),
+	review nvarchar(MAX),
+	gameplay int,
+	presentation int,
+	engagement int,
+	difficulty int,
+	replayable int,
+	created date default getdate()
+)
+
+insert into users values ('user', 'password', 'email@email.com', 'First test user.', default, default),
+	('another', 'password', 'email@email.com', 'Another test user.', default, default),
+	('final', 'password', 'email@email.com', 'Final test user.', default, default)
+
+insert into genre values ('Action'), ('Action-Adventure'), ('Adventure'), ('Puzzle'), ('Role-Playing'),
+	('Simulation'), ('Strategy'), ('Sports'), ('Other')
+	
+insert into games values 
+	(6, 'Arcade Paradise', 'Manage profits, pick up gum, do the laundry and get coin to unlock arcade units and flip the family laundromat business to become an Arcade Paradise',
+		'2022-08-11', 'Nosebleed Interactive', 'Wired Productions', 'image_ArcadeParadise.jpg'),
+	(5, 'Battle Chasers: Nightware', 'Battle Chasers: Nightwar is an RPG inspired by the classic console greats, featuring deep dungeon diving, turn-based combat presented in a classic JRPG format, and a rich story driven by exploration of the world.',
+		'2017-10-03', 'Airship Syndicate', 'THQ Nordic', 'image_BattleChasers.jpg'),
+	(4, 'Evergarden', 'Battle Chasers: Nightwar is an RPG inspired by the classic console greats, featuring deep dungeon diving, turn-based combat presented in a classic JRPG format, and a rich story driven by exploration of the world.',
+		'2018-08-16', 'Flippfly LLC', 'Flippfly LLC', 'image_Evergarden.jpg'),
+	(2, 'Grime', 'Destroy... Absorb... Grow... GRIME is a fast and unforgiving Action-Adventure RPG in which you crush your foes with living weapons that mutate form and function, and then consume their remains with a black hole to strengthen your vessel as you break apart a world of anatomical horror and intrigue.',
+		'2021-08-02', 'Clover Bite', 'Akapura Games', 'image_Grime.png'),
+	(2, 'Mages of Mystralia', 'In a world of magic, your mind is your greatest weapon. Learn the ways of magic and design your own spells to fight enemies, navigate treacherous terrain, and right past wrongs in the kingdom of Mystralia.',
+		'2017-05-18', 'Borealys Games', 'Borealys Games', 'image_Mystralia.jpg'),
+	(7, 'Northgard', 'Northgard is a strategy game based on Norse mythology in which you control a clan of Vikings vying for the control of a mysterious newfound continent.',
+		'2018-03-07', 'Shiro Games', 'Shiro Unlimited', 'image_Northgard.jpg'),
+	(3, 'Spiritfarer', 'Northgard is a strategy game based on Norse mythology in which you control a clan of Vikings vying for the control of a mysterious newfound continent.',
+		'2020-08-18', 'Thunder Lotus Games', 'Thunder Lotus Games', 'image_Spiritfarer.jpg'),
+	(7, 'Terraforming Mars', 'The taming of the Red Planet has begun! Corporations are competing to transform Mars into a habitable planet by spending vast resources and using innovative technology to raise temperature, create a breathable atmosphere, and make oceans of water.',
+		'2018-10-17', 'Artefacts Studio', 'Twin Sails Interactive', 'image_Mars.jpg'),
+	(1, 'Valfaris', 'Set in a far corner of space, Valfaris is a heavy metal infused 2D action-platformer and the next game from the team behind Unity Awards finalist, Slain: Back From Hell. Brutal combat. Deadly enemies. Stunning pixel art. Savage soundtrack. Get ready to rip the galaxy a new wormhole.',
+		'2019-10-10', 'Steel Mantis', 'Big Sugar', 'image_Valfaris.jpg'),
+	(2, 'Yoku''s Island Express', 'Meet Yoku, the pint-sized postman protagonist of Yoku''s Island Express! Use a unique blend of pinball mechanics, platforming and open world exploration to unlock the secrets of Mokumana Island, help the locals, awaken ancient deities and much more in this amazing new tropical adventure!',
+		'2018-05-29', 'Villa Gorilla', 'Team17 Digital Ltd', 'image_Yoku.jpg')
+		
+insert into reviews values (10, 1, 'A Brilliant New Take on Metroidvania', 'There are few things more satisfying in the gaming world than when a studio manages to take a common formula and put a successful twist on it to create something new. There have been previous attempts to add adventure elements to pinball, but
+	the combination of pinball and metroidvania work so perfectly with this game. The art style and theming of the game provide a solid, welcoming foundation for all audiences and only help to make this game an absolute gem of indie development', 8, 8, 6, 3, 9, default)
+
