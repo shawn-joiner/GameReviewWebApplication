@@ -47,7 +47,7 @@ namespace GR.Controllers
         public JsonResult GetById(int id)
         {
             string query = @"
-                            select from dbo.Genre
+                            select * from dbo.Genre
                             where Id = @Id
                             ";
 

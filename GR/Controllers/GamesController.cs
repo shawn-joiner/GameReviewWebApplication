@@ -47,7 +47,7 @@ namespace GR.Controllers
         public JsonResult GetById(int id)
         {
             string query = @"
-                            select from dbo.Games 
+                            select * from dbo.Games 
                             where Id = @Id
                             ";
 
