@@ -59,7 +59,7 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Id", id); //I'm not sure if this line is needed in the code
+                    myCommand.Parameters.AddWithValue("@Id", id); 
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -71,7 +71,7 @@ namespace GR.Controllers
         }
 
         [HttpPost]
-        public JsonResult Post(Reviews emp)
+        public JsonResult Post(Reviews rev)
         {
             string query = @"
                             insert into dbo.Reviews
@@ -89,16 +89,16 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Game_id", emp.Game_id);
-                    myCommand.Parameters.AddWithValue("@User_id", emp.User_id);
-                    myCommand.Parameters.AddWithValue("@Title", emp.Title);
-                    myCommand.Parameters.AddWithValue("@Review", emp.Review);
-                    myCommand.Parameters.AddWithValue("@Gameplay", emp.Gameplay);
-                    myCommand.Parameters.AddWithValue("@Presentation", emp.Presentation);
-                    myCommand.Parameters.AddWithValue("@Engagement", emp.Engagement);
-                    myCommand.Parameters.AddWithValue("@Difficulty", emp.Difficulty);
-                    myCommand.Parameters.AddWithValue("@Replayable", emp.Replayable);
-                    myCommand.Parameters.AddWithValue("@Created", emp.Created);
+                    myCommand.Parameters.AddWithValue("@Game_id", rev.Game_id);
+                    myCommand.Parameters.AddWithValue("@User_id", rev.User_id);
+                    myCommand.Parameters.AddWithValue("@Title", rev.Title);
+                    myCommand.Parameters.AddWithValue("@Review", rev.Review);
+                    myCommand.Parameters.AddWithValue("@Gameplay", rev.Gameplay);
+                    myCommand.Parameters.AddWithValue("@Presentation", rev.Presentation);
+                    myCommand.Parameters.AddWithValue("@Engagement", rev.Engagement);
+                    myCommand.Parameters.AddWithValue("@Difficulty", rev.Difficulty);
+                    myCommand.Parameters.AddWithValue("@Replayable", rev.Replayable);
+                    myCommand.Parameters.AddWithValue("@Created", rev.Created);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -111,7 +111,7 @@ namespace GR.Controllers
 
 
         [HttpPut]
-        public JsonResult Put(Reviews emp)
+        public JsonResult Put(Reviews rev)
         {
             string query = @"
                             update dbo.Reviews
@@ -136,16 +136,17 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Game_id", emp.Game_id);
-                    myCommand.Parameters.AddWithValue("@User_id", emp.User_id);
-                    myCommand.Parameters.AddWithValue("@Title", emp.Title);
-                    myCommand.Parameters.AddWithValue("@Review", emp.Review);
-                    myCommand.Parameters.AddWithValue("@Gameplay", emp.Gameplay);
-                    myCommand.Parameters.AddWithValue("@Presentation", emp.Presentation);
-                    myCommand.Parameters.AddWithValue("@Engagement", emp.Engagement);
-                    myCommand.Parameters.AddWithValue("@Difficulty", emp.Difficulty);
-                    myCommand.Parameters.AddWithValue("@Replayable", emp.Replayable);
-                    myCommand.Parameters.AddWithValue("@Created", emp.Created);
+                    myCommand.Parameters.AddWithValue("@Id", rev.Id);
+                    myCommand.Parameters.AddWithValue("@Game_id", rev.Game_id);
+                    myCommand.Parameters.AddWithValue("@User_id", rev.User_id);
+                    myCommand.Parameters.AddWithValue("@Title", rev.Title);
+                    myCommand.Parameters.AddWithValue("@Review", rev.Review);
+                    myCommand.Parameters.AddWithValue("@Gameplay", rev.Gameplay);
+                    myCommand.Parameters.AddWithValue("@Presentation", rev.Presentation);
+                    myCommand.Parameters.AddWithValue("@Engagement", rev.Engagement);
+                    myCommand.Parameters.AddWithValue("@Difficulty", rev.Difficulty);
+                    myCommand.Parameters.AddWithValue("@Replayable", rev.Replayable);
+                    myCommand.Parameters.AddWithValue("@Created", rev.Created);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();

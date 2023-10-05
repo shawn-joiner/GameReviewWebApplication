@@ -59,7 +59,7 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Id", id); //I'm not sure if this line is needed in the code
+                    myCommand.Parameters.AddWithValue("@Id", id);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -71,7 +71,7 @@ namespace GR.Controllers
         }
 
         [HttpPost]
-        public JsonResult Post(Games emp)
+        public JsonResult Post(Games gam)
         {
             string query = @"
                             insert into dbo.Games
@@ -87,12 +87,12 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Title", emp.Title);
-                    myCommand.Parameters.AddWithValue("@Genre_id", emp.Genre_id);
-                    myCommand.Parameters.AddWithValue("@Blurb", emp.Blurb);
-                    myCommand.Parameters.AddWithValue("@Release", emp.Release);
-                    myCommand.Parameters.AddWithValue("@Developer", emp.Developer);
-                    myCommand.Parameters.AddWithValue("@Publisher", emp.Publisher);
+                    myCommand.Parameters.AddWithValue("@Title", gam.Title);
+                    myCommand.Parameters.AddWithValue("@Genre_id", gam.Genre_id);
+                    myCommand.Parameters.AddWithValue("@Blurb", gam.Blurb);
+                    myCommand.Parameters.AddWithValue("@Release", gam.Release);
+                    myCommand.Parameters.AddWithValue("@Developer", gam.Developer);
+                    myCommand.Parameters.AddWithValue("@Publisher", gam.Publisher);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -105,7 +105,7 @@ namespace GR.Controllers
        
 
         [HttpPut]
-        public JsonResult Put(Games emp)
+        public JsonResult Put(Games gam)
         {
             string query = @"
                             update dbo.Games
@@ -126,12 +126,13 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Title", emp.Title);
-                    myCommand.Parameters.AddWithValue("@Genre_id", emp.Genre_id);
-                    myCommand.Parameters.AddWithValue("@Blurb", emp.Blurb);
-                    myCommand.Parameters.AddWithValue("@Release", emp.Release);
-                    myCommand.Parameters.AddWithValue("@Developer", emp.Developer);
-                    myCommand.Parameters.AddWithValue("@Publisher", emp.Publisher);
+                    myCommand.Parameters.AddWithValue("@Id", gam.Id);
+                    myCommand.Parameters.AddWithValue("@Title", gam.Title);
+                    myCommand.Parameters.AddWithValue("@Genre_id", gam.Genre_id);
+                    myCommand.Parameters.AddWithValue("@Blurb", gam.Blurb);
+                    myCommand.Parameters.AddWithValue("@Release", gam.Release);
+                    myCommand.Parameters.AddWithValue("@Developer", gam.Developer);
+                    myCommand.Parameters.AddWithValue("@Publisher", gam.Publisher);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();

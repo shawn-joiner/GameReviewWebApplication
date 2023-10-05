@@ -59,7 +59,7 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Id", id); //I'm not sure if this line is needed in the code
+                    myCommand.Parameters.AddWithValue("@Id", id); 
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -71,7 +71,7 @@ namespace GR.Controllers
         }
 
         [HttpPost]
-        public JsonResult Post(Genre emp)
+        public JsonResult Post(Genre gen)
         {
             string query = @"
                             insert into dbo.Genre
@@ -87,7 +87,7 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Name", emp.Name);
+                    myCommand.Parameters.AddWithValue("@Name", gen.Name);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -100,7 +100,7 @@ namespace GR.Controllers
        
 
         [HttpPut]
-        public JsonResult Put(Genre emp)
+        public JsonResult Put(Genre gen)
         {
             string query = @"
                             update dbo.Genre
@@ -117,7 +117,8 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Name", emp.Name);
+                    myCommand.Parameters.AddWithValue("@Id", gen.Id);
+                    myCommand.Parameters.AddWithValue("@Name", gen.Name);
                     
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);

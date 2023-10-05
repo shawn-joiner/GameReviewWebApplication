@@ -59,7 +59,7 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Id", id); //I'm not sure if this line is needed in the code
+                    myCommand.Parameters.AddWithValue("@Id", id); 
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -71,7 +71,7 @@ namespace GR.Controllers
         }
 
         [HttpPost]
-        public JsonResult Post(Users emp)
+        public JsonResult Post(Users use)
         {
             string query = @"
                             insert into dbo.Users (Username, Password, Email, Bio, Joined, Picture) 
@@ -86,12 +86,12 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Username", emp.Username);
-                    myCommand.Parameters.AddWithValue("@Password", emp.Password);
-                    myCommand.Parameters.AddWithValue("@Email", emp.Email);
-                    myCommand.Parameters.AddWithValue("@Bio", emp.Bio);
-                    myCommand.Parameters.AddWithValue("@Joined", emp.Joined);
-                    myCommand.Parameters.AddWithValue("@Picture", emp.Picture);
+                    myCommand.Parameters.AddWithValue("@Username", use.Username);
+                    myCommand.Parameters.AddWithValue("@Password", use.Password);
+                    myCommand.Parameters.AddWithValue("@Email", use.Email);
+                    myCommand.Parameters.AddWithValue("@Bio", use.Bio);
+                    myCommand.Parameters.AddWithValue("@Joined", use.Joined);
+                    myCommand.Parameters.AddWithValue("@Picture", use.Picture);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -104,7 +104,7 @@ namespace GR.Controllers
 
 
         [HttpPut]
-        public JsonResult Put(Users emp)
+        public JsonResult Put(Users use)
         {
             string query = @"
                             update dbo.Users
@@ -114,6 +114,7 @@ namespace GR.Controllers
                              Bio = @Bio,
                              Joined = @Joined,
                              Picture = @Picture
+                             where Id = @Id
                             ";
 
             DataTable table = new DataTable();
@@ -124,12 +125,13 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Username", emp.Username);
-                    myCommand.Parameters.AddWithValue("@Password", emp.Password);
-                    myCommand.Parameters.AddWithValue("@Email", emp.Email);
-                    myCommand.Parameters.AddWithValue("@Bio", emp.Bio);
-                    myCommand.Parameters.AddWithValue("@Joined", emp.Joined);
-                    myCommand.Parameters.AddWithValue("@Picture", emp.Picture);
+                    myCommand.Parameters.AddWithValue("@Id", use.Id);
+                    myCommand.Parameters.AddWithValue("@Username", use.Username);
+                    myCommand.Parameters.AddWithValue("@Password", use.Password);
+                    myCommand.Parameters.AddWithValue("@Email", use.Email);
+                    myCommand.Parameters.AddWithValue("@Bio", use.Bio);
+                    myCommand.Parameters.AddWithValue("@Joined", use.Joined);
+                    myCommand.Parameters.AddWithValue("@Picture", use.Picture);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
