@@ -4,7 +4,7 @@ namespace GR.Models
 {
     public class Users
     {
-        public int UserId { get; set; }
+        public int Id { get; set; }
 
         [Required (ErrorMessage = "Enter a valid username")]
         public string Username { get; set; }
@@ -17,7 +17,10 @@ namespace GR.Models
 
         public string? Bio { get; set; }
 
-        public string? UserPicture { get; set; }
+        //[DataType(DataType.Date)]
+        public DateTime Joined { get; set; }
+
+        public string? Picture { get; set; }
 
     }
 }

@@ -48,7 +48,7 @@ namespace GR.Controllers
         {
             string query = @"
                             select from dbo.Users
-                            where UserId = @UserId
+                            where Id = @Id
                             ";
 
             DataTable table = new DataTable();
@@ -59,7 +59,7 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@UserId", id); //I'm not sure if this line is needed in the code
+                    myCommand.Parameters.AddWithValue("@Id", id); //I'm not sure if this line is needed in the code
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -74,8 +74,8 @@ namespace GR.Controllers
         public JsonResult Post(Users emp)
         {
             string query = @"
-                            insert into dbo.Users (Username, Password, Email, Bio, UserPicture) 
-                            values (@Username, @Password, @Email, @Bio, @UserPicture) 
+                            insert into dbo.Users (Username, Password, Email, Bio, Joined, Picture) 
+                            values (@Username, @Password, @Email, @Bio, @Joined, @Picture) 
                             ";
 
             DataTable table = new DataTable();
@@ -90,7 +90,8 @@ namespace GR.Controllers
                     myCommand.Parameters.AddWithValue("@Password", emp.Password);
                     myCommand.Parameters.AddWithValue("@Email", emp.Email);
                     myCommand.Parameters.AddWithValue("@Bio", emp.Bio);
-                    myCommand.Parameters.AddWithValue("@UserPicture", emp.UserPicture);
+                    myCommand.Parameters.AddWithValue("@Joined", emp.Joined);
+                    myCommand.Parameters.AddWithValue("@Picture", emp.Picture);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -110,8 +111,9 @@ namespace GR.Controllers
                             set Username = @Username,
                              Password = @Password,
                              Email = @Email,
-                             Bio = @Bio
-                             UserPicture = @UserPicture
+                             Bio = @Bio,
+                             Joined = @Joined,
+                             Picture = @Picture
                             ";
 
             DataTable table = new DataTable();
@@ -126,7 +128,8 @@ namespace GR.Controllers
                     myCommand.Parameters.AddWithValue("@Password", emp.Password);
                     myCommand.Parameters.AddWithValue("@Email", emp.Email);
                     myCommand.Parameters.AddWithValue("@Bio", emp.Bio);
-                    myCommand.Parameters.AddWithValue("@UserPicture", emp.UserPicture);
+                    myCommand.Parameters.AddWithValue("@Joined", emp.Joined);
+                    myCommand.Parameters.AddWithValue("@Picture", emp.Picture);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -142,7 +145,7 @@ namespace GR.Controllers
         {
             string query = @"
                             delete from dbo.Users
-                            where UserId = @UserId
+                            where Id = @Id
                             ";
 
             DataTable table = new DataTable();
@@ -153,7 +156,7 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@UserId", id);
+                    myCommand.Parameters.AddWithValue("@Id", id);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();

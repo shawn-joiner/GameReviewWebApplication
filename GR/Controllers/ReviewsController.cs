@@ -48,7 +48,7 @@ namespace GR.Controllers
         {
             string query = @"
                             select from dbo.Reviews
-                            where ReviewId = @ReviewId
+                            where Id = @Id
                             ";
 
             DataTable table = new DataTable();
@@ -59,7 +59,7 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@ReviewId", id); //I'm not sure if this line is needed in the code
+                    myCommand.Parameters.AddWithValue("@Id", id); //I'm not sure if this line is needed in the code
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -75,10 +75,10 @@ namespace GR.Controllers
         {
             string query = @"
                             insert into dbo.Reviews
-                            (Game, User, ReviewTitle, Review, GamePlay, Presentation, Engagement, Difficulty, Replayable, 
-                            DateCreated) 
-                            values (@Game, @User, @ReviewTitle, @Review, @GamePlay, @Presentation, @Engagement, 
-                            @Difficulty, @Replayable, @DateCreated) 
+                            (Game_id, User_id, Title, Review, Gameplay, Presentation, Engagement, Difficulty, Replayable, 
+                            Created) 
+                            values (@Game_id, @User_id, @Title, @Review, @Gameplay, @Presentation, @Engagement, 
+                            @Difficulty, @Replayable, @Created) 
                             ";
 
             DataTable table = new DataTable();
@@ -89,16 +89,16 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Game", emp.Game);
-                    myCommand.Parameters.AddWithValue("@User", emp.User);
-                    myCommand.Parameters.AddWithValue("@ReviewTitle", emp.ReviewTitle);
+                    myCommand.Parameters.AddWithValue("@Game_id", emp.Game_id);
+                    myCommand.Parameters.AddWithValue("@User_id", emp.User_id);
+                    myCommand.Parameters.AddWithValue("@Title", emp.Title);
                     myCommand.Parameters.AddWithValue("@Review", emp.Review);
-                    myCommand.Parameters.AddWithValue("@GamePlay", emp.GamePlay);
+                    myCommand.Parameters.AddWithValue("@Gameplay", emp.Gameplay);
                     myCommand.Parameters.AddWithValue("@Presentation", emp.Presentation);
                     myCommand.Parameters.AddWithValue("@Engagement", emp.Engagement);
                     myCommand.Parameters.AddWithValue("@Difficulty", emp.Difficulty);
                     myCommand.Parameters.AddWithValue("@Replayable", emp.Replayable);
-                    myCommand.Parameters.AddWithValue("@DateCreated", emp.DateCreated);
+                    myCommand.Parameters.AddWithValue("@Created", emp.Created);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -115,17 +115,17 @@ namespace GR.Controllers
         {
             string query = @"
                             update dbo.Reviews
-                            set Game = @Game,
-                             User = @User,
-                             ReviewTitle = @ReviewTitle,
-                             Review = @Review
-                             GamePlay = @GamePlay
-                             Presentation = @Presentation
-                             Engagement = @Engagement
-                             Difficulty = @Difficulty
-                             Replayable = @Replayable
-                             DateCreated = @DateCreated
-                             where ReviewId = @ReviewId
+                            set Game_id = @Game_id,
+                             User_id = @User_id,
+                             Title = @Title,
+                             Review = @Review,
+                             Gameplay = @Gameplay,
+                             Presentation = @Presentation,
+                             Engagement = @Engagement,
+                             Difficulty = @Difficulty,
+                             Replayable = @Replayable,
+                             Created = @Created
+                             where Id = @Id
                             ";
 
             DataTable table = new DataTable();
@@ -136,16 +136,16 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Game", emp.Game);
-                    myCommand.Parameters.AddWithValue("@User", emp.User);
-                    myCommand.Parameters.AddWithValue("@ReviewTitle", emp.ReviewTitle);
+                    myCommand.Parameters.AddWithValue("@Game_id", emp.Game_id);
+                    myCommand.Parameters.AddWithValue("@User_id", emp.User_id);
+                    myCommand.Parameters.AddWithValue("@Title", emp.Title);
                     myCommand.Parameters.AddWithValue("@Review", emp.Review);
-                    myCommand.Parameters.AddWithValue("@GamePlay", emp.GamePlay);
+                    myCommand.Parameters.AddWithValue("@Gameplay", emp.Gameplay);
                     myCommand.Parameters.AddWithValue("@Presentation", emp.Presentation);
                     myCommand.Parameters.AddWithValue("@Engagement", emp.Engagement);
                     myCommand.Parameters.AddWithValue("@Difficulty", emp.Difficulty);
                     myCommand.Parameters.AddWithValue("@Replayable", emp.Replayable);
-                    myCommand.Parameters.AddWithValue("@DateCreated", emp.DateCreated);
+                    myCommand.Parameters.AddWithValue("@Created", emp.Created);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -161,7 +161,7 @@ namespace GR.Controllers
         {
             string query = @"
                             delete from dbo.Reviews
-                            where ReviewId = @ReviewId
+                            where Id = @Id
                             ";
 
             DataTable table = new DataTable();
@@ -172,7 +172,7 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@ReviewId", id);
+                    myCommand.Parameters.AddWithValue("@Id", id);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();

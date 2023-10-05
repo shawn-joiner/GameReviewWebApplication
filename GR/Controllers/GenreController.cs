@@ -18,15 +18,11 @@ namespace GR.Controllers
             _env = env;
         }
 
-
-
-        [HttpPost]
-        public JsonResult Post(Genre emp)
+        [HttpGet]
+        public JsonResult GetAll()
         {
             string query = @"
-                            insert into dbo.Genre
-                            (GenreName) 
-                            values (@GenreName) 
+                            select * from dbo.Genre
                             ";
 
             DataTable table = new DataTable();
@@ -37,7 +33,61 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@GenreName", emp.GenreName);
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+
+            return new JsonResult(table);
+        }
+
+        [HttpGet("{id}")]
+        public JsonResult GetById(int id)
+        {
+            string query = @"
+                            select from dbo.Genre
+                            where Id = @Id
+                            ";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("AppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myCommand.Parameters.AddWithValue("@Id", id); //I'm not sure if this line is needed in the code
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+
+            return new JsonResult(table);
+        }
+
+        [HttpPost]
+        public JsonResult Post(Genre emp)
+        {
+            string query = @"
+                            insert into dbo.Genre
+                            (Name) 
+                            values (@Name) 
+                            ";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("AppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myCommand.Parameters.AddWithValue("@Name", emp.Name);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -54,9 +104,9 @@ namespace GR.Controllers
         {
             string query = @"
                             update dbo.Genre
-                            set GenreName = @GenreName,
+                            set Name = @Name
                              
-                             where GenreId = @GenreId
+                             where Id = @Id
                             ";
 
             DataTable table = new DataTable();
@@ -67,7 +117,7 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@GenreName", emp.GenreName);
+                    myCommand.Parameters.AddWithValue("@Name", emp.Name);
                     
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
@@ -84,7 +134,7 @@ namespace GR.Controllers
         {
             string query = @"
                             delete from dbo.Genre
-                            where GenreId = @GenreId
+                            where Id = @Id
                             ";
 
             DataTable table = new DataTable();
@@ -95,7 +145,7 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@GenreId", id);
+                    myCommand.Parameters.AddWithValue("@Id", id);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();

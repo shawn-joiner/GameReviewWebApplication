@@ -48,7 +48,7 @@ namespace GR.Controllers
         {
             string query = @"
                             select from dbo.Games 
-                            where GameId = @GameId
+                            where Id = @Id
                             ";
 
             DataTable table = new DataTable();
@@ -59,7 +59,7 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@GameId", id); //I'm not sure if this line is needed in the code
+                    myCommand.Parameters.AddWithValue("@Id", id); //I'm not sure if this line is needed in the code
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -75,8 +75,8 @@ namespace GR.Controllers
         {
             string query = @"
                             insert into dbo.Games
-                            (Game, GenreId, Blurb, ReleaseDate, Developer, Publisher) 
-                            values (@Game, @GenreId, @Blurb, @ReleaseDate, @Developer, @Publisher) 
+                            (Title, Genre_id, Blurb, Release, Developer, Publisher) 
+                            values (@Title, @Genre_id, @Blurb, @Release, @Developer, @Publisher) 
                             ";
 
             DataTable table = new DataTable();
@@ -87,10 +87,10 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Game", emp.Game);
-                    myCommand.Parameters.AddWithValue("@GenreId", emp.GenreId);
+                    myCommand.Parameters.AddWithValue("@Title", emp.Title);
+                    myCommand.Parameters.AddWithValue("@Genre_id", emp.Genre_id);
                     myCommand.Parameters.AddWithValue("@Blurb", emp.Blurb);
-                    myCommand.Parameters.AddWithValue("@ReleaseDate", emp.ReleaseDate);
+                    myCommand.Parameters.AddWithValue("@Release", emp.Release);
                     myCommand.Parameters.AddWithValue("@Developer", emp.Developer);
                     myCommand.Parameters.AddWithValue("@Publisher", emp.Publisher);
                     myReader = myCommand.ExecuteReader();
@@ -109,13 +109,13 @@ namespace GR.Controllers
         {
             string query = @"
                             update dbo.Games
-                            set Game = @Game,
-                             GenreId = @GenreId,
+                            set Title = @Title,
+                             Genre_id = @Genre_id,
                              Blurb = @Blurb,
-                             ReleaseDate = @ReleaseDate
-                             Developer = @Developer
+                             Release = @Release,
+                             Developer = @Developer,
                              Publisher = @Publisher
-                             where GameId = @GameId
+                             where Id = @Id
                             ";
 
             DataTable table = new DataTable();
@@ -126,10 +126,10 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@Game", emp.Game);
-                    myCommand.Parameters.AddWithValue("@GenreId", emp.GenreId);
+                    myCommand.Parameters.AddWithValue("@Title", emp.Title);
+                    myCommand.Parameters.AddWithValue("@Genre_id", emp.Genre_id);
                     myCommand.Parameters.AddWithValue("@Blurb", emp.Blurb);
-                    myCommand.Parameters.AddWithValue("@ReleaseDate", emp.ReleaseDate);
+                    myCommand.Parameters.AddWithValue("@Release", emp.Release);
                     myCommand.Parameters.AddWithValue("@Developer", emp.Developer);
                     myCommand.Parameters.AddWithValue("@Publisher", emp.Publisher);
                     myReader = myCommand.ExecuteReader();
@@ -147,7 +147,7 @@ namespace GR.Controllers
         {
             string query = @"
                             delete from dbo.Games
-                            where GameId = @GameId
+                            where Id = @Id
                             ";
 
             DataTable table = new DataTable();
@@ -158,7 +158,7 @@ namespace GR.Controllers
                 myCon.Open();
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
-                    myCommand.Parameters.AddWithValue("@GameId", id);
+                    myCommand.Parameters.AddWithValue("@Id", id);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();

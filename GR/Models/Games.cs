@@ -4,18 +4,18 @@ namespace GR.Models
 {
     public class Games
     {
-        public int GameId { get; set; }
+        public int Id { get; set; }
 
         [Required(ErrorMessage = "Genre must be specified")]
-        public int GenreID { get; set; }
+        public int Genre_id { get; set; }
 
         [Required(ErrorMessage = "Title is required")]
-        public string Game { get; set; }
+        public string Title { get; set; }
 
-        public TextWriter? Blurb { get; set; }
+        public string? Blurb { get; set; }
 
-        [DataType(DataType.Date)]
-        public DateTime ReleaseDate { get; set; }
+        //[DataType(DataType.Date)]
+        public DateTime Release { get; set; }
 
         public string? Developer { get; set; }
 
