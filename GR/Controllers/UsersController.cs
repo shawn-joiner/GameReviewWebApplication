@@ -75,7 +75,7 @@ namespace GR.Controllers
         {
             string query = @"
                             insert into dbo.Users (Username, Password, Email, Bio, Joined, Picture) 
-                            values (@Username, @Password, @Email, @Bio, @Joined, @Picture) 
+                            values (@Username, @Password, @Email, @Bio, default, default) 
                             ";
 
             DataTable table = new DataTable();
@@ -90,8 +90,6 @@ namespace GR.Controllers
                     myCommand.Parameters.AddWithValue("@Password", use.Password);
                     myCommand.Parameters.AddWithValue("@Email", use.Email);
                     myCommand.Parameters.AddWithValue("@Bio", use.Bio);
-                    myCommand.Parameters.AddWithValue("@Joined", use.Joined);
-                    myCommand.Parameters.AddWithValue("@Picture", use.Picture);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();

@@ -8,7 +8,7 @@ namespace GR.Models
 
 
         public int Game_id {  get; set; }
-        public int User_id {  get; set; }
+        public int AppUser_id {  get; set; }
 
         [Required (ErrorMessage = "The review's title is required")]
         public string Title { get; set; }
@@ -31,7 +31,7 @@ namespace GR.Models
         public int Replayable { get; set; }
 
         //[DataType(DataType.Date)]
-        public DateTime Created { get; set; }
+        public DateTime? Created { get; set; }
 
     }
 }

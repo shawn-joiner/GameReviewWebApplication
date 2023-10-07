@@ -18,7 +18,7 @@ namespace GR.Models
         public string? Bio { get; set; }
 
         //[DataType(DataType.Date)]
-        public DateTime Joined { get; set; }
+        public DateTime? Joined { get; set; }
 
         public string? Picture { get; set; }
 
