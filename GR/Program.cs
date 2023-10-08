@@ -1,3 +1,4 @@
+using Microsoft.Extensions.FileProviders;
 using Newtonsoft.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,6 +19,13 @@ var app = builder.Build();
 
 //Enable CORS (not recommended in production, should whitelist servers accordingly)
 app.UseCors(c => c.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "Photos")),
+    RequestPath = "/Photos"
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

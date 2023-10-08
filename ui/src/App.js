@@ -3,6 +3,7 @@ import './App.css';
 import {Home} from './Home';
 import {Department} from './Department';
 import {Employee} from './Employee';
+import { GameBrowse } from './GameBrowse';
 import {BrowserRouter, Route, Routes,NavLink} from 'react-router-dom';
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
         <Route path='/home' element={<Home/>}/>
         <Route path='/department' element={<Department/>}/>
         <Route path='/employee' element={<Employee/>}/>
+        <Route path ='/gamebrowse' element={<GameBrowse/>}/>
       </Routes>
     </div>
     </BrowserRouter>

@@ -20,6 +20,7 @@ namespace GR.Models
         public string? Developer { get; set; }
 
         public string? Publisher { get; set; }
+        public string Image { get; set; }
 
     }
 }

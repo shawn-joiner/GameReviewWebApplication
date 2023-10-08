@@ -75,8 +75,8 @@ namespace GR.Controllers
         {
             string query = @"
                             insert into dbo.Games
-                            (Title, Genre_id, Blurb, Release, Developer, Publisher) 
-                            values (@Title, @Genre_id, @Blurb, @Release, @Developer, @Publisher) 
+                            (Title, Genre_id, Blurb, Release, Developer, Publisher, Image) 
+                            values (@Title, @Genre_id, @Blurb, @Release, @Developer, @Publisher, @Image) 
                             ";
 
             DataTable table = new DataTable();
@@ -93,6 +93,7 @@ namespace GR.Controllers
                     myCommand.Parameters.AddWithValue("@Release", gam.Release);
                     myCommand.Parameters.AddWithValue("@Developer", gam.Developer);
                     myCommand.Parameters.AddWithValue("@Publisher", gam.Publisher);
+                    myCommand.Parameters.AddWithValue("@Image", gam.Image);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
@@ -115,6 +116,7 @@ namespace GR.Controllers
                              Release = @Release,
                              Developer = @Developer,
                              Publisher = @Publisher
+                             Image = @Image
                              where Id = @Id
                             ";
 
@@ -133,6 +135,7 @@ namespace GR.Controllers
                     myCommand.Parameters.AddWithValue("@Release", gam.Release);
                     myCommand.Parameters.AddWithValue("@Developer", gam.Developer);
                     myCommand.Parameters.AddWithValue("@Publisher", gam.Publisher);
+                    myCommand.Parameters.AddWithValue("@Image", gam.Image);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
