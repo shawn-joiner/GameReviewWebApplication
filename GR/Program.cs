@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //JSON Serializer
-builder.Services.AddControllers().AddNewtonsoftJson(options=>
+builder.Services.AddControllersWithViews().AddNewtonsoftJson(options=>
     options.SerializerSettings.ReferenceLoopHandling=Newtonsoft.Json.ReferenceLoopHandling.Ignore).AddNewtonsoftJson(
     options=>options.SerializerSettings.ContractResolver=new DefaultContractResolver());
 
@@ -34,8 +34,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseRouting();
+
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
+
 
 app.Run();

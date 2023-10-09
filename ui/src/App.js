@@ -4,6 +4,7 @@ import {Home} from './Home';
 import {Department} from './Department';
 import {Employee} from './Employee';
 import { GameBrowse } from './GameBrowse';
+import { GameView } from './components/GameView';
 import {BrowserRouter, Route, Routes,NavLink} from 'react-router-dom';
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
         <Route path='/department' element={<Department/>}/>
         <Route path='/employee' element={<Employee/>}/>
         <Route path ='/gamebrowse' element={<GameBrowse/>}/>
+        <Route path ='/gameview/:gameId' element={<GameView/>}/>
       </Routes>
     </div>
     </BrowserRouter>
