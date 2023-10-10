@@ -2,13 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { variables } from "../Variables";
 import "./GameView.css";
-import GameCard from "./GameCard.js";
-import { Link } from "react-router-dom";
 
 export const GameView = (props) => {
   const { gameId } = useParams();
   const [game, setGame] = useState([]);
-  const [reviews, setReviews] = useState([]);
+/**  const [reviews, setReviews] = useState([]); */
   
   const fetchGame = async () => {
       const url = variables.API_URL + "Games/" + gameId;
@@ -16,17 +14,17 @@ export const GameView = (props) => {
       const json = await response.json();
       setGame(json[0]);
   };
-
+{/*
   const fetchReviews = async () => {
       const url = variables.API_URL + "Reviews/getByGame/" + gameId;
       const response = await fetch(url);
       const json = await response.json();
       setReviews(json);
   };
-
+*/}
   useEffect(() => {
       fetchGame();
-      fetchReviews();
+/**    fetchReviews(); */
     }, []);
 
         return(
