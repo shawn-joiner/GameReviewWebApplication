@@ -70,6 +70,34 @@ namespace GR.Controllers
             return new JsonResult(table);
         }
 
+        [HttpGet("name/{username}")]
+        public JsonResult GetByName(string username)
+        {
+            string query = @"
+                            select * from dbo.Users
+                            where username = @username
+                            ";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("AppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myCommand.Parameters.AddWithValue("@username", username);
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+
+            return new JsonResult(table);
+        }
+
+
         [HttpPost]
         public JsonResult Post(Users use)
         {
