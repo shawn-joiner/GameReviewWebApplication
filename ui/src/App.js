@@ -4,6 +4,7 @@ import {Home} from './Home';
 import {Department} from './Department';
 import {Employee} from './Employee';
 import { GameBrowse } from './GameBrowse';
+import { ReviewBrowse } from './ReviewBrowse';
 import { GameView } from './components/GameView';
 import {BrowserRouter, Route, Routes,NavLink} from 'react-router-dom';
 
@@ -40,7 +41,8 @@ function App() {
         <Route path='/department' element={<Department/>}/>
         <Route path='/employee' element={<Employee/>}/>
         <Route path ='/gamebrowse' element={<GameBrowse/>}/>
-        <Route path ='/gameview/:gameId' element={<GameView/>}/>
+        <Route path='/gameview/:gameId' element={<GameView />} />
+        <Route path='/reviewbrowse' element={<ReviewBrowse />} />
       </Routes>
     </div>
     </BrowserRouter>
