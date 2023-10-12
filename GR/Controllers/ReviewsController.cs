@@ -70,6 +70,60 @@ namespace GR.Controllers
             return new JsonResult(table);
         }
 
+        [HttpGet("user/{AppUser_Id}")]
+        public JsonResult GetByUser(int AppUser_Id)
+        {
+            string query = @"
+                            select * from dbo.Reviews
+                            where AppUser_Id = @AppUser_Id
+                            ";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("AppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myCommand.Parameters.AddWithValue("@AppUser_Id", AppUser_Id);
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+
+            return new JsonResult(table);
+        }
+
+        [HttpGet("game/{Game_Id}")]
+        public JsonResult GetByGame(int Game_Id)
+        {
+            string query = @"
+                            select * from dbo.Reviews
+                            where Game_Id = @Game_Id
+                            ";
+
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("AppCon");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myCommand.Parameters.AddWithValue("@Game_Id", Game_Id);
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+
+            return new JsonResult(table);
+        }
+
         [HttpPost]
         public JsonResult Post(Reviews rev)
         {
