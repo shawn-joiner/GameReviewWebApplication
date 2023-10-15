@@ -5,10 +5,17 @@ import {Department} from './Department';
 import {Employee} from './Employee';
 import { GameBrowse } from './GameBrowse';
 import { GameView } from './components/GameView';
-import {BrowserRouter, Route, Routes,NavLink} from 'react-router-dom';
+import {Login } from './Login'
+import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
+import { CookiesProvider } from "react-cookie";
+import { useCookies } from "react-cookie";
+
 
 function App() {
-  return (
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+    return (
+    <CookiesProvider>
     <BrowserRouter>
     <div className="App container">
       <h3 className="d-flex justify-content-center m-3">
@@ -31,8 +38,9 @@ function App() {
             <NavLink className="btn btn-light btn-outline-primary" to="/employee">
               Employee
             </NavLink>
-          </li>
-        </ul>
+           </li>
+                        </ul>
+                        {JSON.stringify(cookies["user"]) != null ? <p className="userName">{JSON.stringify(cookies["user"]).replaceAll('"', "").toUpperCase()}</p> : ""}
       </nav>
 
       <Routes>
@@ -41,9 +49,11 @@ function App() {
         <Route path='/employee' element={<Employee/>}/>
         <Route path ='/gamebrowse' element={<GameBrowse/>}/>
         <Route path ='/gameview/:gameId' element={<GameView/>}/>
+        <Route path='/login' element={<Login />} />
       </Routes>
     </div>
-    </BrowserRouter>
+     </BrowserRouter>
+     </CookiesProvider>
   );
 }
 
