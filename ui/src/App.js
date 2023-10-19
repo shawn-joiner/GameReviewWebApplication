@@ -6,6 +6,7 @@ import {Employee} from './Employee';
 import { GameBrowse } from './GameBrowse';
 import { ReviewBrowse } from './ReviewBrowse';
 import { GameView } from './components/GameView';
+import { ReviewView } from './components/ReviewView';
 import {BrowserRouter, Route, Routes,NavLink} from 'react-router-dom';
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path ='/gamebrowse' element={<GameBrowse/>}/>
         <Route path='/gameview/:gameId' element={<GameView />} />
         <Route path='/reviewbrowse' element={<ReviewBrowse />} />
+        <Route path='/reviewview/:reviewId' element={<ReviewView />} />
       </Routes>
     </div>
     </BrowserRouter>

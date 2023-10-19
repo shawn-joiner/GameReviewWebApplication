@@ -2,7 +2,6 @@ import React,{Component} from 'react';
 import { variables } from './Variables.js';
 import { Link } from "react-router-dom";
 import ReviewCard from './components/ReviewCard.js';
-//import "./ReviewBrowse.css";
 
 export class ReviewBrowse extends Component{
 

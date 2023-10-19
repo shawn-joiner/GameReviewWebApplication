@@ -14,7 +14,6 @@ namespace GR.Models
 
         public string? Blurb { get; set; }
 
-        //[DataType(DataType.Date)]
         public DateTime Release { get; set; }
 
         public string? Developer { get; set; }

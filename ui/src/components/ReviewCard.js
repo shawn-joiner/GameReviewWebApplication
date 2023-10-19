@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-{/* import { variables } from "../Variables.js"; */ }
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./ReviewCard.css";
@@ -9,7 +8,6 @@ const ReviewCard = (props) => {
     <div className="ReviewCard">
       <Link to={`/reviewview/${props.id}`}> 
         <div id="review" key={props.id}>
-          {/* <img src={variables.PHOTO_URL + props.image} /> */}
                   <h3>{props.title}</h3>
                   <h5>{props.review}</h5>
                   <h5>Gameplay: {props.gameplay}</h5>
