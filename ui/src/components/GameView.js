@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { variables } from "../Variables";
+import ReviewCard from "./ReviewCard.js"
 import "./GameView.css";
 
 export const GameView = (props) => {
   const { gameId } = useParams();
   const [game, setGame] = useState([]);
-/**  const [reviews, setReviews] = useState([]); */
+  const [reviews, setReviews] = useState([]);
   
   const fetchGame = async () => {
       const url = variables.API_URL + "Games/" + gameId;
@@ -14,20 +15,21 @@ export const GameView = (props) => {
       const json = await response.json();
       setGame(json[0]);
   };
-{/*
+
   const fetchReviews = async () => {
-      const url = variables.API_URL + "Reviews/getByGame/" + gameId;
+      const url = variables.API_URL + "Reviews/game/" + gameId;
       const response = await fetch(url);
       const json = await response.json();
       setReviews(json);
   };
-*/}
+
   useEffect(() => {
       fetchGame();
-/**    fetchReviews(); */
+      fetchReviews();
     }, []);
 
         return(
+            <div>
             <div id = 'view-grid'>
                 <div id = 'view-img'>
                     <img class="resize" src={variables.PHOTO_URL + game.image} />
@@ -54,6 +56,23 @@ export const GameView = (props) => {
                         <p class = "paragraph">{game.release}</p>
                     </div>
                 </div>             
+            </div>
+            <div id = 'review-preview'>
+                {reviews.map(rev => (
+                    <ReviewCard
+                        key = {rev.id}
+                        id = {rev.id}
+                        title = {rev.title}
+                        review = {rev.review}
+                        gameplay = {rev.gameplay}
+                        presentation = {rev.presentation}
+                        engagement = {rev.engagement}
+                        difficulty = {rev.difficulty}
+                        replayable = {props.replayable}
+                        created = {rev.created}
+                    />
+                ))}
+            </div>
             </div>
         )
 }

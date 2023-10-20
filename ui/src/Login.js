@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { variables } from "./Variables";
 import { useCookies } from "react-cookie";
+import { useNavigate } from 'react-router-dom';
 
 export const Login = (props) => {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -14,12 +16,13 @@ export const Login = (props) => {
         const json = await response.json();
 
         if (json.length === 0) {
-            console.log("No User Found")
+            alert("No User Found")
         } else {
             if (userName === json[0].username && password === json[0].password) {
                 setCookie("user", userName, { path: "/" });
+                navigate('/home');
             } else {
-                console.log("Login Incorrect")
+                alert("Login Incorrect")
             }
         }
         setUserName("")

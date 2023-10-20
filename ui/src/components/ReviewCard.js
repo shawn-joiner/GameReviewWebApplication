@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-{/* import { variables } from "../Variables.js"; */ }
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./ReviewCard.css";
@@ -17,7 +16,7 @@ const ReviewCard = (props) => {
                   <h5>Engagement: {props.engagement}</h5>
                   <h5>Difficulty: {props.difficulty}</h5>
                   <h5>Replayable: {props.replayable}</h5>
-                  <h7>{props.created}</h7>
+                  <h7>Created: {props.created}</h7>
         </div>
       </Link>
     </div>
