@@ -62,6 +62,9 @@ function App() {
                About
               </NavLink>
             </li>
+            <li>
+              {JSON.stringify(cookies["user"]) != null ? <p className="userName">{JSON.stringify(cookies["user"]).replaceAll('"', "").toUpperCase()}</p> : ""}
+            </li>
           </ul>
           <ul className="navbar-nav">
           <div id="hidden1">
