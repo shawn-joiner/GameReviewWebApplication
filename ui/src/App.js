@@ -98,7 +98,7 @@ function App() {
         <Route path='/employee' element={<Employee/>}/>
         <Route path ='/gamebrowse' element={<GameBrowse/>}/>
         <Route path='/gameview/:gameId' element={<GameView />} />
-        <Route path='/profile/:userName' element={<GameView />} />
+        <Route path='/profile/:userName' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='/reviewbrowse' element={<ReviewBrowse />} />
       </Routes>
