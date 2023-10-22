@@ -6,7 +6,8 @@ import {Employee} from './Employee';
 import { GameBrowse } from './GameBrowse';
 import { ReviewBrowse } from './ReviewBrowse';
 import { GameView } from './components/GameView';
-import {Login } from './Login'
+import { Login } from './Login'
+import { Profile } from './Profile';
 import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 import { CookiesProvider } from "react-cookie";
 import { useCookies } from "react-cookie";
@@ -96,7 +97,8 @@ function App() {
         <Route path='/department' element={<Department/>}/>
         <Route path='/employee' element={<Employee/>}/>
         <Route path ='/gamebrowse' element={<GameBrowse/>}/>
-        <Route path ='/gameview/:gameId' element={<GameView/>}/>
+        <Route path='/gameview/:gameId' element={<GameView />} />
+        <Route path='/profile/:userName' element={<GameView />} />
         <Route path='/login' element={<Login />} />
         <Route path='/reviewbrowse' element={<ReviewBrowse />} />
       </Routes>
