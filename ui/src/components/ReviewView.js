@@ -5,36 +5,38 @@ import "./ReviewView.css";
 
 export const ReviewView = (props) => {
     const { reviewId } = useParams();
-    /* const [game, setGame] = useState([]); */
-    const [reviews, setReviews] = useState([]); 
+    const [reviews, setReviews] = useState([]);
+    const [game, setGame] = useState([]);
+    const [author, setAuthor] = useState([]);
 
-    const fetchReviews = async () => {
-        const url = variables.API_URL + "Reviews/" + reviewId;
-        const response = await fetch(url);
-        const json = await response.json();
-        setReviews(json[0]);
+    const fetchData = async () => {
+        let reviewResponse = await fetch(variables.API_URL + "Reviews/" + reviewId);
+        const review = await reviewResponse.json();
+        setReviews(review[0]);
+
+        let gameResponse = await fetch(variables.API_URL + "Games/" + review[0].game_Id);
+        const game = await gameResponse.json();
+        setGame(game[0]);
+
+        let authorResponse = await fetch(variables.API_URL + "Users/" + review[0].appUser_Id);
+        const author = await authorResponse.json();
+        setAuthor(author[0]);
     };
-    {/*
-  const fetchReviews = async () => {
-      const url = variables.API_URL + "Reviews/getByGame/" + gameId;
-      const response = await fetch(url);
-      const json = await response.json();
-      setReviews(json);
-  };
-*/}
+  
+
     useEffect(() => {
-        /*fetchGame(); */
-          fetchReviews(); 
+        fetchData();
     }, []);
 
     return (
         <div id='view-grid'>
-            {/* <div id='view-img'>
-                <img class="resize" src={variables.PHOTO_URL + game.image} />
-            </div> */}
-
-
             <div id="view-words">
+                <div id='game-title'>
+                    <h2>Review For: {game.title}</h2>
+                </div>
+                <div id='author'>
+                    <h4>Written By: {author.username}</h4>
+                </div>
                 <div id='view-title'>
                     <br />
                     <h3 class="header">Review Title: {reviews.title}</h3>
