@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './Login.css';
 import { variables } from "./Variables";
 import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
@@ -31,31 +32,38 @@ export const Login = (props) => {
 
     return (
         <>
-            <form onSubmit={handleSubmit }>
-                <label>Username:</label>
-                <input type="text"
+            <form className="login-form" onSubmit={handleSubmit}>
+                <label htmlFor="username">Username:</label>
+                <input
+                    type="text"
+                    id="username"
                     value={userName}
-                    onChange={(e) => setUserName(e.target.value)}></input>
-                <label>Password:</label>
-                <input type="password"
+                    onChange={(e) => setUserName(e.target.value)}
+                />
+                <label htmlFor="password">Password:</label>
+                <input
+                    type="password"
+                    id="password"
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}></input>
-                <input type="submit" />
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <input type="submit" value="Log In" />
             </form>
             <button
+                className="user-cookie-button"
                 onClick={() => {
                     alert(`User cookie is ${JSON.stringify(cookies["user"])}`);
-                }
-                }
+                }}
             >
-                Show user cookie
-            </button >
+                Show User Cookie
+            </button>
             <button
+                className="delete-cookie-button"
                 onClick={() => {
                     removeCookie("user");
                 }}
             >
-                Delete user cookie
+                Delete User Cookie
             </button>
         </>
   )

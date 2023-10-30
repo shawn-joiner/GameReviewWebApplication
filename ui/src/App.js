@@ -76,10 +76,10 @@ function App() {
            </li>
            </div>
            <div id="hidden2">
-           <li className="nav-item- m-1">
-            <NavLink className="btn btn-light btn-outline-primary" to="">
-              Profile
-            </NavLink>
+            <li className="nav-item- m-1">
+                                    {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to={'/profile/' + JSON.stringify(cookies["user"]).replaceAll('"', "")}>
+                                        Profile
+                                    </NavLink> : ""}                  
            </li>
            <li className="nav-item- m-1">
             <NavLink className="btn btn-light btn-outline-primary" onClick={() => {
