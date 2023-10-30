@@ -1,0 +1,5 @@
+#view-browse {
+    grid-column: 1/5;
+    background-image: linear-gradient(225deg, silver, black);
+    padding: 25px;
+}
