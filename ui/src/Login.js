@@ -49,22 +49,6 @@ export const Login = (props) => {
                 />
                 <input type="submit" value="Log In" />
             </form>
-            <button
-                className="user-cookie-button"
-                onClick={() => {
-                    alert(`User cookie is ${JSON.stringify(cookies["user"])}`);
-                }}
-            >
-                Show User Cookie
-            </button>
-            <button
-                className="delete-cookie-button"
-                onClick={() => {
-                    removeCookie("user");
-                }}
-            >
-                Delete User Cookie
-            </button>
         </>
   )
 }
