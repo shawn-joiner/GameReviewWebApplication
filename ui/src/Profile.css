@@ -45,3 +45,14 @@
     font-size: 16px;
     margin: 10px 0;
 }
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.reviewCard {
+    flex: 1;
+    max-width: calc(33.33% - 20px);
+}

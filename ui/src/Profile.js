@@ -37,7 +37,7 @@ export const Profile = (props) => {
                     <p className="joined-date">Joined: {user.joined}</p>
                     <p className="bio">{user.bio}</p>
             </div>
-            <div>
+            <di className="grid-container" v>
                 {reviews.map(rev => (
                     <ReviewCard
                         key={rev.id}
@@ -50,9 +50,10 @@ export const Profile = (props) => {
                         difficulty={rev.difficulty}
                         replayable={rev.replayable}
                         created={rev.created}
+                        className="reviewCard"
                     />
                 ))}
-            </div>
+            </di>
         </>
         
     )
