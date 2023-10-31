@@ -2,11 +2,8 @@ import React,{Component} from 'react';
 import { variables } from './Variables.js';
 import { Link } from "react-router-dom";
 import ReviewCard from './components/ReviewCard.js';
-<<<<<<< Updated upstream
-//import "./ReviewBrowse.css";
-=======
 import "./ReviewBrowse.css";
->>>>>>> Stashed changes
+
 
 export class ReviewBrowse extends Component{
 

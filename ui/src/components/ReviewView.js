@@ -29,7 +29,7 @@ export const ReviewView = (props) => {
     }, []);
 
     return (
-        <div id="view-grid">
+        <div id='view-grid'>
             <div id="view-words">
                 <div id='game-title'>
                     <h2>Review For: {game.title}</h2>

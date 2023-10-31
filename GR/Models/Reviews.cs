@@ -13,7 +13,7 @@ namespace GR.Models
         [Required (ErrorMessage = "The review's title is required")]
         public string Title { get; set; }
 
-        public string Review  { get; set; }//I'm not sure if string is the right type for text in SQL
+        public string Review  { get; set; }
 
         [Range (1, 10, ErrorMessage = "Please select a number between 1 and 10")]
         public int Gameplay { get; set; }
@@ -30,7 +30,7 @@ namespace GR.Models
         [Range(1, 10, ErrorMessage = "Please select a number between 1 and 10")]
         public int Replayable { get; set; }
 
-        //[DataType(DataType.Date)]
+       
         public DateTime? Created { get; set; }
 
     }

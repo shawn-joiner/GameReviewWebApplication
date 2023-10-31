@@ -6,12 +6,13 @@ import {Employee} from './Employee';
 import { GameBrowse } from './GameBrowse';
 import { ReviewBrowse } from './ReviewBrowse';
 import { GameView } from './components/GameView';
-import {Login } from './Login'
+import { ReviewView } from './components/ReviewView';
+import { Login } from './Login'
+import { Profile } from './Profile';
 import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 import { CookiesProvider } from "react-cookie";
 import { useCookies } from "react-cookie";
 import React, { useEffect, useState } from "react";
-
 
 function App() {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -75,10 +76,10 @@ function App() {
            </li>
            </div>
            <div id="hidden2">
-           <li className="nav-item- m-1">
-            <NavLink className="btn btn-light btn-outline-primary" to="">
-              Profile
-            </NavLink>
+            <li className="nav-item- m-1">
+                                    {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to={'/profile/' + JSON.stringify(cookies["user"]).replaceAll('"', "")}>
+                                        Profile
+                                    </NavLink> : ""}                  
            </li>
            <li className="nav-item- m-1">
             <NavLink className="btn btn-light btn-outline-primary" onClick={() => {
@@ -96,9 +97,11 @@ function App() {
         <Route path='/department' element={<Department/>}/>
         <Route path='/employee' element={<Employee/>}/>
         <Route path ='/gamebrowse' element={<GameBrowse/>}/>
-        <Route path ='/gameview/:gameId' element={<GameView/>}/>
+        <Route path='/gameview/:gameId' element={<GameView />} />
+        <Route path='/profile/:userName' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='/reviewbrowse' element={<ReviewBrowse />} />
+        <Route path='/reviewview/:reviewId' element={<ReviewView />} />
       </Routes>
     </div>
      </BrowserRouter>
