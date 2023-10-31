@@ -6,13 +6,13 @@ import {Employee} from './Employee';
 import { GameBrowse } from './GameBrowse';
 import { ReviewBrowse } from './ReviewBrowse';
 import { GameView } from './components/GameView';
+import { ReviewView } from './components/ReviewView';
 import { Login } from './Login'
 import { Profile } from './Profile';
 import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 import { CookiesProvider } from "react-cookie";
 import { useCookies } from "react-cookie";
 import React, { useEffect, useState } from "react";
-
 
 function App() {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -101,6 +101,7 @@ function App() {
         <Route path='/profile/:userName' element={<Profile />} />
         <Route path='/login' element={<Login />} />
         <Route path='/reviewbrowse' element={<ReviewBrowse />} />
+        <Route path='/reviewview/:reviewId' element={<ReviewView />} />
       </Routes>
     </div>
      </BrowserRouter>
