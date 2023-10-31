@@ -7,10 +7,34 @@ import { GameBrowse } from './GameBrowse';
 import { ReviewBrowse } from './ReviewBrowse';
 import { GameView } from './components/GameView';
 import { ReviewView } from './components/ReviewView';
-import {BrowserRouter, Route, Routes,NavLink} from 'react-router-dom';
+import { Login } from './Login'
+import { Profile } from './Profile';
+import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
+import { CookiesProvider } from "react-cookie";
+import { useCookies } from "react-cookie";
+import React, { useEffect, useState } from "react";
 
 function App() {
-  return (
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+
+    function navbar() {
+      var set1 = document.getElementById("hidden1");
+      var set2 = document.getElementById("hidden2");
+        if(cookies["user"] != undefined) {
+          set1.style.display = "none";
+          set2.style.display = "inline";
+        } else if(cookies["user"] === undefined) {
+          set1.style.display = "inline";
+          set2.style.display = "none";
+        }
+    }
+
+    useEffect(() => {
+      navbar();
+    }, [cookies["user"]]);
+
+    return (
+    <CookiesProvider>
     <BrowserRouter>
     <div className="App container">
       <h3 className="d-flex justify-content-center m-3">
@@ -25,16 +49,47 @@ function App() {
             </NavLink>
           </li>
           <li className="nav-item- m-1">
-            <NavLink className="btn btn-light btn-outline-primary" to="/department">
-              Department
+            <NavLink className="btn btn-light btn-outline-primary" to="/gamebrowse">
+              Games
             </NavLink>
           </li>
           <li className="nav-item- m-1">
-            <NavLink className="btn btn-light btn-outline-primary" to="/employee">
-              Employee
+            <NavLink className="btn btn-light btn-outline-primary" to="/reviewbrowse">
+              Reviews
             </NavLink>
-          </li>
-        </ul>
+           </li>
+            <li className="nav-item- m-1">
+              <NavLink className="btn btn-light btn-outline-primary" to="">
+               About
+              </NavLink>
+            </li>
+            <li>
+              {JSON.stringify(cookies["user"]) != null ? <p className="userName">{JSON.stringify(cookies["user"]).replaceAll('"', "").toUpperCase()}</p> : ""}
+            </li>
+          </ul>
+          <ul className="navbar-nav">
+          <div id="hidden1">
+          <li className="nav-item- m-1">
+            <NavLink className="btn btn-light btn-outline-primary" to="/login">
+              Login
+            </NavLink>
+           </li>
+           </div>
+           <div id="hidden2">
+            <li className="nav-item- m-1">
+                                    {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to={'/profile/' + JSON.stringify(cookies["user"]).replaceAll('"', "")}>
+                                        Profile
+                                    </NavLink> : ""}                  
+           </li>
+           <li className="nav-item- m-1">
+            <NavLink className="btn btn-light btn-outline-primary" onClick={() => {
+                    removeCookie("user");}}  to="/home">
+              Logout
+            </NavLink>
+           </li>
+           </div>
+            </ul>
+                
       </nav>
 
       <Routes>
@@ -43,11 +98,14 @@ function App() {
         <Route path='/employee' element={<Employee/>}/>
         <Route path ='/gamebrowse' element={<GameBrowse/>}/>
         <Route path='/gameview/:gameId' element={<GameView />} />
+        <Route path='/profile/:userName' element={<Profile />} />
+        <Route path='/login' element={<Login />} />
         <Route path='/reviewbrowse' element={<ReviewBrowse />} />
         <Route path='/reviewview/:reviewId' element={<ReviewView />} />
       </Routes>
     </div>
-    </BrowserRouter>
+     </BrowserRouter>
+     </CookiesProvider>
   );
 }
 

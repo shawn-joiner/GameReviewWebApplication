@@ -15,7 +15,7 @@ const ReviewCard = (props) => {
                   <h5>Engagement: {props.engagement}</h5>
                   <h5>Difficulty: {props.difficulty}</h5>
                   <h5>Replayable: {props.replayable}</h5>
-                  <h7>{props.created}</h7>
+                  <h7>Created: {props.created}</h7>
         </div>
       </Link>
     </div>

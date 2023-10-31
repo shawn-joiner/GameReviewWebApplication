@@ -1124,19 +1124,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\E\\.nuget\\packages\\": {}
+    "C:\\Users\\mrosa\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\E\\Documents\\GitHub\\2023_F_Shawn\\GR\\GR.csproj",
+      "projectUniqueName": "C:\\Users\\mrosa\\OneDrive\\Documents\\GitHub\\2023_F_Shawn\\GR\\GR.csproj",
       "projectName": "GR",
-      "projectPath": "C:\\Users\\E\\Documents\\GitHub\\2023_F_Shawn\\GR\\GR.csproj",
-      "packagesPath": "C:\\Users\\E\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\E\\Documents\\GitHub\\2023_F_Shawn\\GR\\obj\\",
+      "projectPath": "C:\\Users\\mrosa\\OneDrive\\Documents\\GitHub\\2023_F_Shawn\\GR\\GR.csproj",
+      "packagesPath": "C:\\Users\\mrosa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mrosa\\OneDrive\\Documents\\GitHub\\2023_F_Shawn\\GR\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\E\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mrosa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
