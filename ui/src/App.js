@@ -7,6 +7,7 @@ import { GameBrowse } from './GameBrowse';
 import { ReviewBrowse } from './ReviewBrowse';
 import { GameView } from './components/GameView';
 import { ReviewView } from './components/ReviewView';
+import { CreateReview } from './CreateReview';
 import { Login } from './Login'
 import { Profile } from './Profile';
 import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
@@ -62,10 +63,16 @@ function App() {
               <NavLink className="btn btn-light btn-outline-primary" to="">
                About
               </NavLink>
-            </li>
+                            </li>
+                            <li className="nav-item- m-1">
+                                {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to='/createreivew'>
+                                    Create Review
+                                </NavLink> : ""}
+                            </li>
             <li>
               {JSON.stringify(cookies["user"]) != null ? <p className="userName">{JSON.stringify(cookies["user"]).replaceAll('"', "").toUpperCase()}</p> : ""}
-            </li>
+                            </li>
+
           </ul>
           <ul className="navbar-nav">
           <div id="hidden1">
@@ -80,7 +87,7 @@ function App() {
                                     {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to={'/profile/' + JSON.stringify(cookies["user"]).replaceAll('"', "")}>
                                         Profile
                                     </NavLink> : ""}                  
-           </li>
+                                </li>                              
            <li className="nav-item- m-1">
             <NavLink className="btn btn-light btn-outline-primary" onClick={() => {
                     removeCookie("user");}}  to="/home">
@@ -102,6 +109,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/reviewbrowse' element={<ReviewBrowse />} />
         <Route path='/reviewview/:reviewId' element={<ReviewView />} />
+        <Route path='/createreivew' element={<CreateReview />} />
       </Routes>
     </div>
      </BrowserRouter>
