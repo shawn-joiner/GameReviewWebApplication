@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import {Home} from './Home';
+import {About} from './About';
 import {Department} from './Department';
 import {Employee} from './Employee';
 import { GameBrowse } from './GameBrowse';
@@ -59,7 +60,7 @@ function App() {
             </NavLink>
            </li>
             <li className="nav-item- m-1">
-              <NavLink className="btn btn-light btn-outline-primary" to="">
+              <NavLink className="btn btn-light btn-outline-primary" to="/about">
                About
               </NavLink>
             </li>
@@ -93,7 +94,8 @@ function App() {
       </nav>
 
       <Routes>
-        <Route path='/home' element={<Home/>}/>
+        <Route path='/home' element={<Home />} />
+        <Route path='/about' element={<About />} />
         <Route path='/department' element={<Department/>}/>
         <Route path='/employee' element={<Employee/>}/>
         <Route path ='/gamebrowse' element={<GameBrowse/>}/>
