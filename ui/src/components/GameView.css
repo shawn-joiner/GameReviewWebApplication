@@ -1,11 +1,11 @@
-#view-grid {
+#game-grid {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     gap: 10px;
     grid-auto-rows: minmax(100px, auto);
 }
 
-#view-img {
+#game-img {
     grid-column: 1/3;
 
 }
@@ -17,7 +17,7 @@
 
 }
 
-#view-words {
+#game-words {
     width: 100%;
     height: 100%;
     object-fit: cover;
