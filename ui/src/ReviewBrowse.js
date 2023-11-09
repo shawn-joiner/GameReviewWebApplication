@@ -3,6 +3,7 @@ import { variables } from './Variables.js';
 import { Link } from "react-router-dom";
 import ReviewCard from './components/ReviewCard.js';
 import "./ReviewBrowse.css";
+import { dateConvert } from "./Functions";
 
 
 export class ReviewBrowse extends Component{
@@ -42,7 +43,7 @@ export class ReviewBrowse extends Component{
                         engagement={rev.engagement}
                         difficulty={rev.difficulty}
                         replayable={rev.replayable}
-                        created={rev.created}
+                        created={dateConvert(rev.created)}
                     />
                 ))}
                 </div>

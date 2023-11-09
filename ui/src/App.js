@@ -18,22 +18,6 @@ import React, { useEffect, useState } from "react";
 function App() {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
-    function navbar() {
-      var set1 = document.getElementById("hidden1");
-      var set2 = document.getElementById("hidden2");
-        if(cookies["user"] != undefined) {
-          set1.style.display = "none";
-          set2.style.display = "inline";
-        } else if(cookies["user"] === undefined) {
-          set1.style.display = "inline";
-          set2.style.display = "none";
-        }
-    }
-
-    useEffect(() => {
-      navbar();
-    }, [cookies["user"]]);
-
     return (
     <CookiesProvider>
     <BrowserRouter>
@@ -58,45 +42,36 @@ function App() {
             <NavLink className="btn btn-light btn-outline-primary" to="/reviewbrowse">
               Reviews
             </NavLink>
-           </li>
-            <li className="nav-item- m-1">
-              <NavLink className="btn btn-light btn-outline-primary" to="">
-               About
-              </NavLink>
-                            </li>
-                            <li className="nav-item- m-1">
-                                {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to='/createreivew'>
-                                    Create Review
-                                </NavLink> : ""}
-                            </li>
-            <li>
-              {JSON.stringify(cookies["user"]) != null ? <p className="userName">{JSON.stringify(cookies["user"]).replaceAll('"', "").toUpperCase()}</p> : ""}
-                            </li>
-
-          </ul>
-          <ul className="navbar-nav">
-          <div id="hidden1">
+          </li>
           <li className="nav-item- m-1">
-            <NavLink className="btn btn-light btn-outline-primary" to="/login">
-              Login
+            <NavLink className="btn btn-light btn-outline-primary" to="">
+              About
             </NavLink>
-           </li>
-           </div>
-           <div id="hidden2">
-            <li className="nav-item- m-1">
-                                    {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to={'/profile/' + JSON.stringify(cookies["user"]).replaceAll('"', "")}>
-                                        Profile
-                                    </NavLink> : ""}                  
-                                </li>                              
-           <li className="nav-item- m-1">
-            <NavLink className="btn btn-light btn-outline-primary" onClick={() => {
-                    removeCookie("user");}}  to="/home">
+          </li>
+          <li>
+            {JSON.stringify(cookies["user"]) != null ? <p className="userName">{JSON.stringify(cookies["user"]).replaceAll('"', "").toUpperCase()}</p> : ""}
+          </li>
+        </ul>
+
+        <ul className="navbar-nav" id="navbar-login">
+          <li className="nav-item- m-1">
+            {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to='/createreivew'>
+              Create Review
+            </NavLink> : ""}
+          </li>
+          <li className="nav-item- m-1">
+            {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to={'/profile/' + JSON.stringify(cookies["user"]).replaceAll('"', "")}>
+              Profile
+            </NavLink> : ""}                  
+          </li>
+          <li className="nav-item- m-1">
+            {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" onClick={() => {removeCookie("user");}}  to="/home">
               Logout
-            </NavLink>
-           </li>
-           </div>
-            </ul>
-                
+            </NavLink> : <NavLink className="btn btn-light btn-outline-primary" to="/login">
+              Login
+            </NavLink>}
+          </li>                             
+        </ul>          
       </nav>
 
       <Routes>

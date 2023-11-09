@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { variables } from "../Variables";
+import { dateConvert } from "../Functions";
 import "./ReviewView.css";
 
 export const ReviewView = (props) => {
@@ -8,6 +9,7 @@ export const ReviewView = (props) => {
     const [reviews, setReviews] = useState([]);
     const [game, setGame] = useState([]);
     const [author, setAuthor] = useState([]);
+    const [date, setDate] = useState([]);
 
     const fetchData = async () => {
         let reviewResponse = await fetch(variables.API_URL + "Reviews/" + reviewId);
@@ -21,6 +23,8 @@ export const ReviewView = (props) => {
         let authorResponse = await fetch(variables.API_URL + "Users/" + review[0].appUser_Id);
         const author = await authorResponse.json();
         setAuthor(author[0]);
+
+        setDate(dateConvert(review[0].created));
     };
   
 
@@ -55,7 +59,7 @@ export const ReviewView = (props) => {
                     <h5 class="score">Replayable: {reviews.replayable}</h5>
                 </div>
                 <div id='view-date'>
-                    <h7 class="date">Date Created: {reviews.created}</h7>
+                    <h7 class="date">Date Created: {date}</h7>
                 </div>
             </div>
         </div>

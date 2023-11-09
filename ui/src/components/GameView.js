@@ -2,18 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { variables } from "../Variables";
 import ReviewCard from "./ReviewCard.js"
+import { dateConvert } from "../Functions";
 import "./GameView.css";
 
 export const GameView = (props) => {
   const { gameId } = useParams();
   const [game, setGame] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [release, setRelease] = useState([]);
   
   const fetchGame = async () => {
       const url = variables.API_URL + "Games/" + gameId;
       const response = await fetch(url);
       const json = await response.json();
       setGame(json[0]);
+      setRelease(dateConvert(json[0].release));
   };
 
   const fetchReviews = async () => {
@@ -53,7 +56,7 @@ export const GameView = (props) => {
                     <div id = 'game-date'>
                         <br />
                         <h3 class = "header">Release Date</h3>
-                        <p class = "paragraph">{game.release}</p>
+                        <p class = "paragraph">{release}</p>
                     </div>
                 </div>             
             </div>
