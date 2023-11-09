@@ -24,6 +24,7 @@ export class ReviewBrowse extends Component{
             })
         });
     }
+    
     render(){
 
         const {

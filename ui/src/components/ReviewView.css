@@ -1,7 +1,13 @@
-#view-grid {
+#review-container {
     background-image: linear-gradient(225deg, silver, black);
-    padding: 100px 100px 100px 0px;
     border: 1px solid indigo;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#view-grid {
+    display: flex;
+    justify-content: center;
 }
 
 #view-words {
@@ -10,5 +16,9 @@
     background-image: linear-gradient(135deg, white, #3752ac);
     overflow: auto;
     border: 3px solid black;
+}
 
+#review-buttons {
+    display: flex;
+    justify-content: center;
 }
