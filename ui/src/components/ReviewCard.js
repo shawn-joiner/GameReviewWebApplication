@@ -43,7 +43,7 @@ const ReviewCard = (props) => {
                     </div>
                   </div>
                   
-                  <h7>Created: {props.created}</h7>
+                  <h6>Created: {props.created}</h6>
         </div>
       </Link>
     </div>

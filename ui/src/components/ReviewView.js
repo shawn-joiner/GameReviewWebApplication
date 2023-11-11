@@ -4,7 +4,7 @@ import { variables } from "../Variables";
 import { dateConvert } from "../Functions";
 import "./ReviewView.css";
 import { useCookies } from "react-cookie";
-import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Link, NavLink } from 'react-router-dom';
 
 
 export const ReviewView = (props) => {
@@ -58,7 +58,7 @@ export const ReviewView = (props) => {
                         <h2>Review For: {game.title}</h2>
                     </div>
                     <div id='author'>
-                        <h4>Written By: {author.username}</h4>
+                    <Link to={`/profile/${author.username}`} style={{color:"indigo"}}><u><h4>Written By: {author.username}</h4></u></Link>
                     </div>
                     <div id='view-title'>
                         <br />
@@ -84,7 +84,7 @@ export const ReviewView = (props) => {
             </div>
             <div id='review-buttons'>
                 {cookies["user"] === author.username ? <button className="btn btn-primary m-2 float-end">Edit</button> : ""}
-                {cookies["user"] === author.username ? <NavLink className="btn btn-primary m-2 float-end" to={'/home'} onClick={() => {remove(reviewId);}}>Delete</NavLink> : ""}
+                {cookies["user"] === author.username ? <NavLink className="btn btn-primary m-2 float-end" to={'/reviewbrowse'} onClick={() => {remove(reviewId);}}>Delete</NavLink> : ""}
             </div>
         </div>
     )

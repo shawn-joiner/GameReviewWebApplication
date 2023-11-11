@@ -33,7 +33,7 @@ export const Profile = (props) => {
         
         <>
             <div className="profile-container">
-                {JSON.stringify(cookies["user"]).replaceAll('"', "") === user.username ? <button className="edit-button">Edit</button> : ""}
+                {cookies["user"] === user.username ? <button className="edit-button">Edit</button> : ""}
                 <img src={variables.PHOTO_URL + user.picture} className="profile-image" alt="User's Profile Picture"></img>
                     <p className="username">{user.username}</p>
                     <p className="email">{user.email}</p>

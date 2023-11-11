@@ -15,7 +15,7 @@ export class ReviewBrowse extends Component{
         }
     }
 
-    componentDidMount() {
+    retrieve() {
         fetch(variables.API_URL + 'reviews')
         .then(response => response.json())
         .then((json) => {
@@ -23,6 +23,14 @@ export class ReviewBrowse extends Component{
                 reviews: json
             })
         });
+    } 
+
+    componentDidMount() {
+        this.retrieve();
+    }
+
+    componentDidUpdate()  {
+        this.retrieve();
     }
     
     render(){
