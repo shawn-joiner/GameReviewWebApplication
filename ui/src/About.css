@@ -1,27 +1,37 @@
-.container {
+.about-container {
     padding: 0, 1em, 1em, 1em;
-    
 }
 h1{
-    padding-bottom: 0.5em;
+    padding-bottom: 0em;
     color: indigo;
 }
 
-.row{
+/*.about-row{
     padding: 0.1em;
     margin: 0px;
     
-}
+}*/
 
 h3 {
-    /*padding: 5px;*/
-    border: 1px solid indigo;
-    /*margin: 0.1em;*/
-    background-color: silver;
+    /*padding: 5px;
+    border: 0.5px solid indigo;
+    margin: 0.1em;
+    background-color: silver;*/
     color: indigo;
+    padding-left: 10px;
 }
 
 footer{
     padding: 1em;
     color: indigo;
+}
+
+dl {
+    text-align: left;
+    padding-left: 10px;
+}
+
+ul {
+    text-align: left;
+    padding-left: 20px;
 }

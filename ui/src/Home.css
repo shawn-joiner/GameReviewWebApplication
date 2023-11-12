@@ -1,0 +1,26 @@
+.container {
+    padding: 0, 1em, 1em, 1em;
+}
+h1{
+    color: indigo;
+    text-align: center;
+}
+
+.row {
+    padding: 0.1em;
+    text-align: left;
+}
+
+h3 {
+    padding-left: 10px;
+    border: 1px solid indigo;
+    /*margin: 0.1em;*/
+    background-color: silver;
+    color: indigo;
+    text-align: left;
+}
+
+footer{
+    padding: 1em;
+    color: indigo;
+}
