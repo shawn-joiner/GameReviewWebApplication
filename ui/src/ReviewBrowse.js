@@ -29,8 +29,10 @@ export class ReviewBrowse extends Component{
         this.retrieve();
     }
 
-    componentDidUpdate()  {
-        this.retrieve();
+    componentDidUpdate(prevProps, prevState)  {
+        if(prevState.reviews.length !== this.state.reviews.length) {
+            this.retrieve();
+        }
     }
     
     render(){
