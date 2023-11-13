@@ -57,7 +57,7 @@ function App() {
 
         <ul className="navbar-nav" id="navbar-login">
           <li className="nav-item- m-1">
-            {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to='/createreivew'>
+            {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to='/createreview'>
               Create Review
             </NavLink> : ""}
           </li>

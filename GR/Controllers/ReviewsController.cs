@@ -168,16 +168,13 @@ namespace GR.Controllers
         {
             string query = @"
                             update dbo.Reviews
-                            set Game_id = @Game_id,
-                             AppUser_id = @AppUser_id,
-                             Title = @Title,
+                            set Title = @Title,
                              Review = @Review,
                              Gameplay = @Gameplay,
                              Presentation = @Presentation,
                              Engagement = @Engagement,
                              Difficulty = @Difficulty,
-                             Replayable = @Replayable,
-                             Created = @Created
+                             Replayable = @Replayable
                              where Id = @Id
                             ";
 
@@ -190,8 +187,6 @@ namespace GR.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myCommand.Parameters.AddWithValue("@Id", rev.Id);
-                    myCommand.Parameters.AddWithValue("@Game_id", rev.Game_id);
-                    myCommand.Parameters.AddWithValue("@AppUser_id", rev.AppUser_id);
                     myCommand.Parameters.AddWithValue("@Title", rev.Title);
                     myCommand.Parameters.AddWithValue("@Review", rev.Review);
                     myCommand.Parameters.AddWithValue("@Gameplay", rev.Gameplay);
@@ -199,7 +194,6 @@ namespace GR.Controllers
                     myCommand.Parameters.AddWithValue("@Engagement", rev.Engagement);
                     myCommand.Parameters.AddWithValue("@Difficulty", rev.Difficulty);
                     myCommand.Parameters.AddWithValue("@Replayable", rev.Replayable);
-                    myCommand.Parameters.AddWithValue("@Created", rev.Created);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
                     myReader.Close();
