@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import { variables } from './Variables.js';
-import { Link } from "react-router-dom";
 import GameCard from './components/GameCard.js';
 import "./GameBrowse.css";
 
@@ -23,7 +22,6 @@ export class GameBrowse extends Component{
         });
     }
     render(){
-
         const {
             games
         }=this.state;

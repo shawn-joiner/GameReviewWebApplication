@@ -4,16 +4,17 @@ import { variables } from "../Variables";
 import { dateConvert } from "../Functions";
 import "./ReviewView.css";
 import { useCookies } from "react-cookie";
-import { BrowserRouter, Route, Routes, Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 
 export const ReviewView = (props) => {
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]); // eslint-disable-line no-unused-vars
     const { reviewId } = useParams();
     const [reviews, setReviews] = useState([]);
     const [game, setGame] = useState([]);
     const [author, setAuthor] = useState([]);
     const [date, setDate] = useState([]);
-    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+    
 
 
     const fetchData = async () => {
@@ -35,7 +36,7 @@ export const ReviewView = (props) => {
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     function remove(id) {
         if(window.confirm('Are you sure?')){
@@ -58,7 +59,7 @@ export const ReviewView = (props) => {
                         <h2>Review For: {game.title}</h2>
                     </div>
                     <div id='author'>
-                    <Link to={`/profile/${author.username}`} style={{color:"indigo"}}><u><h4>Written By: {author.username}</h4></u></Link>
+                    <NavLink to={`/profile/${author.username}`} style={{color:"indigo"}}><u><h4>Written By: {author.username}</h4></u></NavLink>
                     </div>
                     <div id='view-title'>
                         <br />

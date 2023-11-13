@@ -1,31 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { variables } from "./Variables";
 import './CreateReview.css';
-import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
 import { useParams } from "react-router-dom";
 
 export const EditReview = (props) => {
-    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
-    const [user, setUser] = useState("");
     const [games, setGames] = useState("");
     const { reviewId } = useParams();
-
-    const [gameId, setGameId] = useState(1);
-    const [title, setTitle] = useState("");
-    const [review, setReview] = useState("");
-    const [gameplay, setGameplay] = useState(1);
-    const [presentation, setPresentation] = useState(1);
-    const [engagement, setEngagement] = useState(1);
-    const [difficulty, setDifficulty] = useState(1);
-    const [replayable, setReplayable] = useState(1);
-
     const [input, setInput] = useState([]);
-
     const navigate = useNavigate();
 
     const fetchData = async () => {
-
         const response = await fetch(variables.API_URL + "Reviews/" + reviewId)
         const reviewJson = await response.json();
         setInput(reviewJson[0]);
@@ -40,7 +25,7 @@ export const EditReview = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const url = variables.API_URL + "Reviews";
-        const response = await fetch(url, {
+        await fetch(url, {
             method: 'PUT',
             body: JSON.stringify({
                 "title": input.title,
@@ -57,25 +42,19 @@ export const EditReview = (props) => {
                 'Content-Type': 'application/json'
             }
         });
-        const json = await response.json();
         navigate('/reviewbrowse')
     };
 
     useEffect(() => {
         fetchData()
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <>
             <form className="review-form" onSubmit={handleSubmit}>
                 <label htmlFor="game">Game:</label>
-
-                <select value={input.gameId} onChange={(e) => {
-                    console.log(e.target.value)
-                    setGameId(e.target.value)
-                }
-                }>
-                    {games != "" ? games.map((game) => {
+                <select value={input.gameId} >
+                    {games !== "" ? games.map((game) => {
                         return <option value={game.id} > {game.title} </option>
                     }) : ""}
                 </select>

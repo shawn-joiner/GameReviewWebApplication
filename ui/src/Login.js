@@ -1,12 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './Login.css';
 import { variables } from "./Variables";
 import { useCookies } from "react-cookie";
 import { useNavigate, NavLink } from 'react-router-dom';
 
-
 export const Login = (props) => {
-    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]); // eslint-disable-line no-unused-vars
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();

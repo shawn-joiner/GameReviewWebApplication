@@ -5,7 +5,7 @@ import { useCookies } from "react-cookie";
 import { useNavigate } from 'react-router-dom';
 
 export const CreateReview = (props) => {
-    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]); // eslint-disable-line no-unused-vars
     const [user, setUser] = useState("");
     const [games, setGames] = useState("");
 
@@ -35,7 +35,7 @@ export const CreateReview = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const url = variables.API_URL + "Reviews";
-        const response = await fetch(url, {
+        await fetch(url, {
             method: 'POST',
             body: JSON.stringify({
                 "game_id": gameId,
@@ -52,13 +52,12 @@ export const CreateReview = (props) => {
                 'Content-Type': 'application/json'
             }
         });
-        const json = await response.json();
         navigate('/reviewbrowse')
     };
 
     useEffect(() => {
         fetchData()
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <>
@@ -70,7 +69,7 @@ export const CreateReview = (props) => {
                     setGameId(e.target.value)
                 }
                 }>
-                    {games != "" ? games.map((game) => {
+                    {games !== "" ? games.map((game) => {
                         return <option value={game.id} > {game.title} </option>
                     }) : ""}
                 </select>

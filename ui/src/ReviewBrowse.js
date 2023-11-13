@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import { variables } from './Variables.js';
-import { Link } from "react-router-dom";
 import ReviewCard from './components/ReviewCard.js';
 import "./ReviewBrowse.css";
 import { dateConvert } from "./Functions";
@@ -36,14 +35,13 @@ export class ReviewBrowse extends Component{
     }
     
     render(){
-
         const {
             reviews
         }=this.state;
         return (
             <div id = "view-browse">
                 <div id = 'review-preview'>
-                {reviews.map(rev => (
+                {[...reviews].reverse().map(rev => (
                     <ReviewCard
                         key={rev.id}
                         id={rev.id}

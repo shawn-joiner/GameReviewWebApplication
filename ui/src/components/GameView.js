@@ -29,13 +29,13 @@ export const GameView = (props) => {
   useEffect(() => {
       fetchGame();
       fetchReviews();
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
         return(
             <div>
             <div id = 'game-grid'>
                 <div id = 'game-img'>
-                    <img class="resize" src={variables.PHOTO_URL + game.image} />
+                    <img class="resize" src={variables.PHOTO_URL + game.image} alt="" />
                 </div>
 
                 <div id = "game-words">

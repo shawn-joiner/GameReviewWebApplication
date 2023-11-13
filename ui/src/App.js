@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {Home} from './Home';
 import {About} from './About';
@@ -16,10 +15,9 @@ import { EditReview } from './EditReview';
 import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 import { CookiesProvider } from "react-cookie";
 import { useCookies } from "react-cookie";
-import React, { useEffect, useState } from "react";
 
 function App() {
-    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]); // eslint-disable-line no-unused-vars
 
     return (
     <CookiesProvider>
@@ -58,17 +56,17 @@ function App() {
 
         <ul className="navbar-nav" id="navbar-login">
           <li className="nav-item- m-1">
-            {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to='/createreview'>
+            {cookies["user"] !== undefined ? <NavLink className="btn btn-light btn-outline-primary" to='/createreview'>
               Create Review
             </NavLink> : ""}
           </li>
           <li className="nav-item- m-1">
-            {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to={'/profile/' + JSON.stringify(cookies["user"]).replaceAll('"', "")}>
+            {cookies["user"] !== undefined ? <NavLink className="btn btn-light btn-outline-primary" to={'/profile/' + JSON.stringify(cookies["user"]).replaceAll('"', "")}>
               Profile
             </NavLink> : ""}                  
           </li>
           <li className="nav-item- m-1">
-            {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" onClick={() => {removeCookie("user");}}  to="/home">
+            {cookies["user"] !== undefined ? <NavLink className="btn btn-light btn-outline-primary" onClick={() => {removeCookie("user");}}  to="/home">
               Logout
             </NavLink> : <NavLink className="btn btn-light btn-outline-primary" to="/login">
               Login

@@ -8,9 +8,9 @@ import { dateConvert } from "./Functions";
 import { useNavigate } from 'react-router-dom';
 
 export const Profile = (props) => {
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]); // eslint-disable-line no-unused-vars
     const { userName } = useParams();
     const [user, setUser] = useState([]);
-    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
     const [reviews, setReviews] = useState([]);
     const [joined, setJoined] = useState([]);
     const [picture, setPicture] = useState([]);
@@ -31,12 +31,12 @@ export const Profile = (props) => {
     
     useEffect(() => {
         fetchData()
-    }, []);
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         const url = variables.API_URL + "Users";
-        const response = await fetch(url, {
+        await fetch(url, {
             method: 'PUT',
             body: JSON.stringify({
                 "id": user.id,
@@ -49,7 +49,6 @@ export const Profile = (props) => {
                 'Content-Type': 'application/json'
             }
         });
-        const json = await response.json();
         fetchData();
     };
 
@@ -94,7 +93,7 @@ export const Profile = (props) => {
             <div className="profile-container">
                 {cookies["user"] === user.username ? <button type="button" className="btn btn-primary m-2 float-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Edit</button> : ""}
-                <img src={variables.PHOTO_URL + user.picture} className="profile-image" alt="User's Profile Picture"></img>
+                <img src={variables.PHOTO_URL + user.picture} className="profile-image" alt=""></img>
                     <p className="username">{user.username}</p>
                     <p className="email">{user.email}</p>
                     <p className="joined-date">Joined: {joined}</p>
@@ -131,47 +130,29 @@ export const Profile = (props) => {
                                 <div className="p-2 w-50 bd-highlight">
                                     <div className="input-group mb-3">
                                         <span className="input-group-text">Password</span>
-                                        <input type="text" className="form-control"
-                                            defaultValue={user.password}
-                                            onChange={(e) => user.password = e.target.value}/>
+                                        <input type="text" className="form-control" defaultValue={user.password} onChange={(e) => user.password = e.target.value}/>
                                     </div>
 
                                     <div className="input-group mb-3">
                                         <span className="input-group-text">Email</span>
-                                        <input type="text" className="form-control"
-                                            defaultValue={user.email}
-                                            onChange={(e) => user.email = e.target.value}/>
+                                        <input type="text" className="form-control" defaultValue={user.email} onChange={(e) => user.email = e.target.value}/>
                                     </div>
 
                                     <div className="input-group mb-3">
                                         <span className="input-group-text">Bio</span>
-                                        <input type="text" className="form-control"
-                                            defaultValue={user.bio}
-                                            onChange={(e) => user.bio = e.target.value}/>
+                                        <input type="text" className="form-control" defaultValue={user.bio} onChange={(e) => user.bio = e.target.value}/>
                                     </div>
 
                                 </div>
 
                                 <div className="p-2 w-50 bd-highlight">
-                                    <img width="250px" height="250px"
-                                        src={variables.PHOTO_URL + picture}/>
+                                    <img width="250px" height="250px" src={variables.PHOTO_URL + picture} alt=""/>
                                     <input className="m-2" type="file" onChange={imageUpload}/>
                                 </div>
                             </div>
 
-                            <button type="button"
-                                className="btn btn-primary float-start"
-                                onClick={remove}
-                                data-bs-dismiss="modal" 
-                                aria-label="Close"
-                                >Delete</button>
-
-                            <button type="button"
-                                className="btn btn-primary float-end"
-                                onClick={handleSubmit}
-                                data-bs-dismiss="modal" 
-                                aria-label="Close"
-                                >Update</button>
+                            <button type="button" className="btn btn-primary float-start" onClick={remove} data-bs-dismiss="modal"  aria-label="Close">Delete</button>
+                            <button type="button" className="btn btn-primary float-end" onClick={handleSubmit} data-bs-dismiss="modal"  aria-label="Close">Update</button>
                         </div>
                     </div>
                 </div> 
