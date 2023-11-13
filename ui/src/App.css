@@ -44,3 +44,7 @@
 .userName{
     padding: 6px 12px;
 }
+
+.navbar-login {
+  float: right;
+}

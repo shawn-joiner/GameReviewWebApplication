@@ -3,6 +3,7 @@ import { variables } from './Variables.js';
 import { Link } from "react-router-dom";
 import ReviewCard from './components/ReviewCard.js';
 import "./ReviewBrowse.css";
+import { dateConvert } from "./Functions";
 
 
 export class ReviewBrowse extends Component{
@@ -14,7 +15,7 @@ export class ReviewBrowse extends Component{
         }
     }
 
-    componentDidMount() {
+    retrieve() {
         fetch(variables.API_URL + 'reviews')
         .then(response => response.json())
         .then((json) => {
@@ -22,7 +23,16 @@ export class ReviewBrowse extends Component{
                 reviews: json
             })
         });
+    } 
+
+    componentDidMount() {
+        this.retrieve();
     }
+
+    componentDidUpdate()  {
+        this.retrieve();
+    }
+    
     render(){
 
         const {
@@ -42,7 +52,7 @@ export class ReviewBrowse extends Component{
                         engagement={rev.engagement}
                         difficulty={rev.difficulty}
                         replayable={rev.replayable}
-                        created={rev.created}
+                        created={dateConvert(rev.created)}
                     />
                 ))}
                 </div>

@@ -4,17 +4,20 @@ import { useParams } from "react-router-dom";
 import { variables } from "./Variables";
 import { useCookies } from "react-cookie";
 import ReviewCard from './components/ReviewCard.js';
+import { dateConvert } from "./Functions";
 
 export const Profile = (props) => {
     const { userName } = useParams();
     const [user, setUser] = useState([]);
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
     const [reviews, setReviews] = useState([]);
+    const [joined, setJoined] = useState([]);
 
     const fetchData = async () => {
         const response = await fetch(variables.API_URL + "Users/name/" + userName);
         const userJson = await response.json();
         setUser(userJson[0]);
+        setJoined(dateConvert(userJson[0].joined));
 
         const response2 = await fetch(variables.API_URL + "Reviews/user/" + userJson[0].id);
         const reviewsJson = await response2.json();
@@ -30,11 +33,11 @@ export const Profile = (props) => {
         
         <>
             <div className="profile-container">
-                {JSON.stringify(cookies["user"]).replaceAll('"', "") === user.username ? <button className="edit-button">Edit</button> : ""}
-                <img src={user.picture} className="profile-image" alt="User's Profile Picture"></img>
+                {cookies["user"] === user.username ? <button className="edit-button">Edit</button> : ""}
+                <img src={variables.PHOTO_URL + user.picture} className="profile-image" alt="User's Profile Picture"></img>
                     <p className="username">{user.username}</p>
                     <p className="email">{user.email}</p>
-                    <p className="joined-date">Joined: {user.joined}</p>
+                    <p className="joined-date">Joined: {joined}</p>
                     <p className="bio">{user.bio}</p>
             </div>
             <di className="grid-container" v>

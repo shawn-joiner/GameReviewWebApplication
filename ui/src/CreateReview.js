@@ -53,6 +53,7 @@ export const CreateReview = (props) => {
             }
         });
         const json = await response.json();
+        navigate('/reviewbrowse')
     };
 
     useEffect(() => {
