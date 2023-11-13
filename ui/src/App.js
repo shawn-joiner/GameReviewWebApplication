@@ -11,6 +11,7 @@ import { CreateReview } from './CreateReview';
 import { Login } from './Login'
 import { Register } from './Register';
 import { Profile } from './Profile';
+import { EditReview } from './EditReview';
 import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 import { CookiesProvider } from "react-cookie";
 import { useCookies } from "react-cookie";
@@ -56,7 +57,7 @@ function App() {
 
         <ul className="navbar-nav" id="navbar-login">
           <li className="nav-item- m-1">
-            {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to='/createreivew'>
+            {cookies["user"] != undefined ? <NavLink className="btn btn-light btn-outline-primary" to='/createreview'>
               Create Review
             </NavLink> : ""}
           </li>
@@ -86,7 +87,8 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/reviewbrowse' element={<ReviewBrowse />} />
         <Route path='/reviewview/:reviewId' element={<ReviewView />} />
-        <Route path='/createreivew' element={<CreateReview />} />
+        <Route path='/createreview' element={<CreateReview />} />
+        <Route path='/editreview/:reviewId' element={<EditReview />} />
       </Routes>
     </div>
      </BrowserRouter>
