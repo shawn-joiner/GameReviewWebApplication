@@ -83,8 +83,8 @@ export const ReviewView = (props) => {
                 </div>
             </div>
             <div id='review-buttons'>
-                {cookies["user"] === author.username ? <button className="btn btn-primary m-2 float-end">Edit</button> : ""}
-                {cookies["user"] === author.username ? <NavLink className="btn btn-primary m-2 float-end" to={'/reviewbrowse'} onClick={() => {remove(reviewId);}}>Delete</NavLink> : ""}
+                {cookies["user"] === author.username ? <NavLink to={'/editreview/' + reviewId}> <button className="btn btn-primary m-2 float-end">Edit</button></NavLink> : ""}
+                {cookies["user"] === author.username ? <NavLink to={'/reviewbrowse'}> <button className="btn btn-primary m-2 float-end" onClick={() => {remove(reviewId);}}>Delete</button></NavLink> : ""}
             </div>
         </div>
     )
