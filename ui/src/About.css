@@ -1,24 +1,12 @@
 .about-container {
     padding: 0, 1em, 1em, 1em;
 }
-h1{
-    padding-bottom: 0em;
-    color: indigo;
-}
 
-/*.about-row{
-    padding: 0.1em;
-    margin: 0px;
-    
-}*/
-
-h3 {
-    /*padding: 5px;
-    border: 0.5px solid indigo;
-    margin: 0.1em;
-    background-color: silver;*/
+.about-container h3 {
+    border: 1px solid indigo;
+    background-color: silver;
     color: indigo;
-    padding-left: 10px;
+    margin-top: 20px;
 }
 
 footer{
@@ -26,12 +14,13 @@ footer{
     color: indigo;
 }
 
-dl {
-    text-align: left;
+.about-row dl {
+    text-align: center;
     padding-left: 10px;
 }
 
-ul {
-    text-align: left;
+.about-row ul {
+    list-style-type: none;
+    text-align: center;
     padding-left: 20px;
 }

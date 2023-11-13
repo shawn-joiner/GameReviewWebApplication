@@ -1,23 +1,21 @@
-.container {
+.home-container {
     padding: 0, 1em, 1em, 1em;
+    margin-top: 10px;
 }
-h1{
+.home-container h1{
     color: indigo;
     text-align: center;
 }
 
-.row {
-    padding: 0.1em;
+.home-row {
     text-align: left;
 }
 
-h3 {
-    padding-left: 10px;
+.home-row h3 {
     border: 1px solid indigo;
-    /*margin: 0.1em;*/
     background-color: silver;
     color: indigo;
-    text-align: left;
+    text-align: center;
 }
 
 footer{
