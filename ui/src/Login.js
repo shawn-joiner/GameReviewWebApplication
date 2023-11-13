@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import './Login.css';
 import { variables } from "./Variables";
 import { useCookies } from "react-cookie";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
+
 
 export const Login = (props) => {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -48,6 +49,9 @@ export const Login = (props) => {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <input type="submit" value="Log In" />
+                <NavLink to="/register">
+                    Not a user? Register here!
+                </NavLink>
             </form>
         </>
   )

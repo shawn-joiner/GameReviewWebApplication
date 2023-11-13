@@ -9,6 +9,7 @@ import { GameView } from './components/GameView';
 import { ReviewView } from './components/ReviewView';
 import { CreateReview } from './CreateReview';
 import { Login } from './Login'
+import { Register } from './Register';
 import { Profile } from './Profile';
 import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 import { CookiesProvider } from "react-cookie";
@@ -107,6 +108,7 @@ function App() {
         <Route path='/gameview/:gameId' element={<GameView />} />
         <Route path='/profile/:userName' element={<Profile />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<Register />} />
         <Route path='/reviewbrowse' element={<ReviewBrowse />} />
         <Route path='/reviewview/:reviewId' element={<ReviewView />} />
         <Route path='/createreivew' element={<CreateReview />} />
