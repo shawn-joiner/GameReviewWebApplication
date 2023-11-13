@@ -6,14 +6,11 @@ namespace GR.Models
     {
         public int Id { get; set; }
 
-        [Required (ErrorMessage = "Enter a valid username")]
-        public string Username { get; set; }
+        public string? Username { get; set; }
 
-        [Required (ErrorMessage = "Enter a valid password")]
-        public string Password { get; set; }
+        public string? Password { get; set; }
 
-        [Required]
-        public string Email { get; set; }
+        public string? Email { get; set; }
 
         public string? Bio { get; set; }
 
