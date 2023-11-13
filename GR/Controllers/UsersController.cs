@@ -134,11 +134,9 @@ namespace GR.Controllers
         {
             string query = @"
                             update dbo.Users
-                            set Username = @Username,
-                             Password = @Password,
+                            set Password = @Password,
                              Email = @Email,
                              Bio = @Bio,
-                             Joined = @Joined,
                              Picture = @Picture
                              where Id = @Id
                             ";
@@ -152,11 +150,9 @@ namespace GR.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myCommand.Parameters.AddWithValue("@Id", use.Id);
-                    myCommand.Parameters.AddWithValue("@Username", use.Username);
                     myCommand.Parameters.AddWithValue("@Password", use.Password);
                     myCommand.Parameters.AddWithValue("@Email", use.Email);
                     myCommand.Parameters.AddWithValue("@Bio", use.Bio);
-                    myCommand.Parameters.AddWithValue("@Joined", use.Joined);
                     myCommand.Parameters.AddWithValue("@Picture", use.Picture);
                     myReader = myCommand.ExecuteReader();
                     table.Load(myReader);
@@ -195,7 +191,33 @@ namespace GR.Controllers
             return new JsonResult("Deleted Successfully");
         }
 
+        [Route("SaveFile")]
+        [HttpPost]
 
-        
+        public JsonResult SaveFile()
+        {
+            try
+            {
+                var httpRequest = Request.Form;
+                var postedFile = httpRequest.Files[0];
+                string filename = postedFile.FileName;
+                var physicalPath = _env.ContentRootPath + "/Photos/" + filename;
+
+                using (var stream = new FileStream(physicalPath, FileMode.Create))
+                {
+                    postedFile.CopyTo(stream);
+                }
+
+                return new JsonResult(filename);
+            }
+            catch (Exception)
+            {
+
+                return new JsonResult("anonymous.png");
+            }
+        }
+
+
+
     }
 }

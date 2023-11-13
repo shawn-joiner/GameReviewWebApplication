@@ -2,18 +2,21 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { variables } from "../Variables";
 import ReviewCard from "./ReviewCard.js"
+import { dateConvert } from "../Functions";
 import "./GameView.css";
 
 export const GameView = (props) => {
   const { gameId } = useParams();
   const [game, setGame] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [release, setRelease] = useState([]);
   
   const fetchGame = async () => {
       const url = variables.API_URL + "Games/" + gameId;
       const response = await fetch(url);
       const json = await response.json();
       setGame(json[0]);
+      setRelease(dateConvert(json[0].release));
   };
 
   const fetchReviews = async () => {
@@ -30,30 +33,30 @@ export const GameView = (props) => {
 
         return(
             <div>
-            <div id = 'view-grid'>
-                <div id = 'view-img'>
+            <div id = 'game-grid'>
+                <div id = 'game-img'>
                     <img class="resize" src={variables.PHOTO_URL + game.image} />
                 </div>
 
-                <div id = "view-words">
-                    <div id = 'view-blurb'>
+                <div id = "game-words">
+                    <div id = 'game-blurb'>
                         <br />
                         <p class = "paragraph">{game.blurb}</p>
                     </div>
-                    <div id = 'view-dev'>
+                    <div id = 'game-dev'>
                         <br />
                         <h3 class = "header">Developer</h3>
                         <p class = "paragraph">{game.developer}</p>
                     </div>
-                    <div id = 'view-publisher'>
+                    <div id = 'game-publisher'>
                         <br />
                         <h3 class = "header">Publisher</h3>
                         <p class = "paragraph">{game.publisher}</p>
                     </div>
-                    <div id = 'view-date'>
+                    <div id = 'game-date'>
                         <br />
                         <h3 class = "header">Release Date</h3>
-                        <p class = "paragraph">{game.release}</p>
+                        <p class = "paragraph">{release}</p>
                     </div>
                 </div>             
             </div>
@@ -68,7 +71,7 @@ export const GameView = (props) => {
                         presentation = {rev.presentation}
                         engagement = {rev.engagement}
                         difficulty = {rev.difficulty}
-                        replayable = {props.replayable}
+                        replayable = {rev.replayable}
                         created = {rev.created}
                     />
                 ))}
