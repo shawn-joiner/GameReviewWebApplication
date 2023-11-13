@@ -1,0 +1,46 @@
+import React, { Component } from 'react';
+import "./About.css";
+
+export class About extends Component{
+    render(){
+        return(
+            <div class="about-container">
+                <h1>About Us</h1>
+                <main>
+                    <div>
+                        <h3></h3>
+                        <div class="about-row">
+                            GR is a game review user-friendly app that simplifies the rating process, offering personalized
+                            recommendations based on playability, presentation, difficulty, engagement, and replay value. This
+                            app helps users quickly and easily discover games that match their preferences. GR  users can connect
+                            with the gaming community, post game reviews, and view other user's reviews. 
+                        </div>
+                        <br/>
+                        <h3>Team Members:</h3>
+                        <dl>
+                            <dt>- Team Lead:</dt>
+                            <dd>Shawn Joiner</dd>
+                            <dt>- Sr Developer:</dt>
+                            <dd>Michael Rosario</dd>
+                            <dt>- Jr Developer:</dt>
+                            <dd>Fabian Abarca</dd>
+                        </dl>
+                        <h3>Tech Stack: </h3>
+                        <ul>
+                            <li> ReactJS</li>
+                            <li> Microsoft SQL Server</li>
+                            <li> .NET Core Web API (C#)</li>
+                        </ul>
+                        <h3>To visit the project GitHub press <a href="https://github.com/FranklinCSPracticum/2023_F_Shawn">here</a></h3>
+                    </div>
+                </main>
+                <footer>
+                    <div>
+                    &copy; 2023 - GR
+                    </div>
+                </footer >
+            </div>
+
+        )
+    }
+}
