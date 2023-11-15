@@ -7,10 +7,10 @@ import './Register.css';
 export const Register = (props) => {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]); // eslint-disable-line no-unused-vars
     const [users, setUsers] = useState([]);
-    const [userName, setUserName] = useState([]);
-    const [email, setEmail] = useState([]);
-    const [bio, setBio] = useState([]);
-    const [password, setPassword] = useState([]);
+    const [userName, setUserName] = useState("");
+    const [email, setEmail] = useState("");
+    const [bio, setBio] = useState("");
+    const [password, setPassword] = useState("");
     const navigate = useNavigate();
 
     const fetchData = async () => {
@@ -22,20 +22,24 @@ export const Register = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const url = variables.API_URL + "Users";
-        await fetch(url, {
-            method: 'POST',
-            body: JSON.stringify({
-                "username": userName,
-                "password": password,
-                "email": email,
-                "bio": bio,
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        setCookie("user", userName, { path: "/" });
-        navigate('/home');
+        if (userName.length === 0 || email.length === 0 || bio.length === 0 || password.length === 0) {
+            alert("Fields cannot be left empty")
+        } else {
+            await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({
+                    "username": userName,
+                    "password": password,
+                    "email": email,
+                    "bio": bio,
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            setCookie("user", userName, { path: "/" });
+            navigate('/home');
+        }
     };
 
     useEffect(() => {

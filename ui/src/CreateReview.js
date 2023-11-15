@@ -35,24 +35,29 @@ export const CreateReview = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const url = variables.API_URL + "Reviews";
-        await fetch(url, {
-            method: 'POST',
-            body: JSON.stringify({
-                "game_id": gameId,
-                "appUser_id": user.id,
-                "title": title,
-                "review": review,
-                "gameplay": gameplay,
-                "presentation": presentation,
-                "engagement": engagement,
-                "difficulty": difficulty,
-                "replayable": replayable,
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        navigate('/reviewbrowse')
+        if (title.length === 0 || review.length === 0) {
+            alert("Fields cannot be left empty")
+        } else {
+            await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({
+                    "game_id": gameId,
+                    "appUser_id": user.id,
+                    "title": title,
+                    "review": review,
+                    "gameplay": gameplay,
+                    "presentation": presentation,
+                    "engagement": engagement,
+                    "difficulty": difficulty,
+                    "replayable": replayable,
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            navigate('/reviewbrowse')
+        }
+        
     };
 
     useEffect(() => {
