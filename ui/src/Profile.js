@@ -14,6 +14,9 @@ export const Profile = (props) => {
     const [reviews, setReviews] = useState([]);
     const [joined, setJoined] = useState([]);
     const [picture, setPicture] = useState([]);
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
+    const [bio, setBio] = useState("");
     const navigate = useNavigate();
 
     const fetchData = async () => {
@@ -22,6 +25,9 @@ export const Profile = (props) => {
         setUser(userJson[0]);
         setJoined(dateConvert(userJson[0].joined));
         setPicture(userJson[0].picture);
+        setPassword(userJson[0].password);
+        setEmail(userJson[0].email);
+        setBio(userJson[0].bio);
 
         const response2 = await fetch(variables.API_URL + "Reviews/user/" + userJson[0].id);
         const reviewsJson = await response2.json();
@@ -35,14 +41,20 @@ export const Profile = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        console.log(password);
+        console.log(email);
+        console.log(bio);
+        if(!password || !email.toString() || !bio) {
+            alert("Fields cannot be left empty")
+        } else {
         const url = variables.API_URL + "Users";
         await fetch(url, {
             method: 'PUT',
             body: JSON.stringify({
                 "id": user.id,
-                "password": user.password,
-                "email": user.email,
-                "bio": user.bio,
+                "password": password,
+                "email": email,
+                "bio": bio,
                 "picture": user.picture,
             }),
             headers: {
@@ -50,6 +62,7 @@ export const Profile = (props) => {
             }
         });
         fetchData();
+    };
     };
 
     const imageUpload = async (e) => {
@@ -130,17 +143,17 @@ export const Profile = (props) => {
                                 <div className="p-2 w-50 bd-highlight">
                                     <div className="input-group mb-3">
                                         <span className="input-group-text">Password</span>
-                                        <input type="text" className="form-control" defaultValue={user.password} onChange={(e) => user.password = e.target.value}/>
+                                        <input type="text" className="form-control" defaultValue={password} onChange={(e) => setPassword(e.target.value)}/>
                                     </div>
 
                                     <div className="input-group mb-3">
                                         <span className="input-group-text">Email</span>
-                                        <input type="text" className="form-control" defaultValue={user.email} onChange={(e) => user.email = e.target.value}/>
+                                        <input type="email" className="form-control" defaultValue={email} onChange={(e) => setEmail(e.target.value)}/>
                                     </div>
 
                                     <div className="input-group mb-3">
                                         <span className="input-group-text">Bio</span>
-                                        <input type="text" className="form-control" defaultValue={user.bio} onChange={(e) => user.bio = e.target.value}/>
+                                        <input type="text" className="form-control" defaultValue={bio} onChange={(e) => setBio(e.target.value)}/>
                                     </div>
 
                                 </div>
