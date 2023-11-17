@@ -41,7 +41,7 @@ export class ReviewBrowse extends Component{
         return (
             <div id = "view-browse">
                 <div id = 'review-preview'>
-                {[...reviews].reverse().map(rev => (
+                {reviews.reverse().map(rev => (
                     <ReviewCard
                         key={rev.id}
                         id={rev.id}
