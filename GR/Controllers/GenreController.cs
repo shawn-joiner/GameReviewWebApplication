@@ -11,11 +11,9 @@ namespace GR.Controllers
     public class GenreController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly IWebHostEnvironment _env;
-        public GenreController(IConfiguration configuration, IWebHostEnvironment env)
+        public GenreController(IConfiguration configuration)
         {
             _configuration = configuration;
-            _env = env;
         }
 
         [HttpGet]

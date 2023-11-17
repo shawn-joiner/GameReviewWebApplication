@@ -3,9 +3,14 @@ import "./ReviewCard.css";
 
 const ReviewCard = (props) => {
   let review = props.review;
+  let title = props.title;
 
   if (review.length > 150) {
     review = review.substring(0, 150)+"...";
+  }
+
+  if (title.length > 25) {
+    title = title.substring(0,25) + "...";
   }
 
   return (
@@ -14,7 +19,7 @@ const ReviewCard = (props) => {
         <div id="review" key={props.id}>
                   <div id="reviewWords">
                     <div id="reviewTitle">
-                      <h4>{props.title}</h4>
+                      <h4>{title}</h4>
                     </div>
                     <p>{review}</p>
                   </div>
@@ -41,7 +46,7 @@ const ReviewCard = (props) => {
                     </div>
                   </div>
                   
-                  <h6>Created: {props.created}</h6>
+                  <h6>{props.created}</h6>
         </div>
       </Link>
     </div>
