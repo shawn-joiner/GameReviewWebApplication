@@ -10,6 +10,9 @@ export const EditReview = (props) => {
     const [input, setInput] = useState([]);
     const navigate = useNavigate();
 
+    const [title, setTitle] = useState("");
+    const [review, setReview] = useState("");
+
     const fetchData = async () => {
         const response = await fetch(variables.API_URL + "Reviews/" + reviewId)
         const reviewJson = await response.json();
@@ -25,14 +28,14 @@ export const EditReview = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         const url = variables.API_URL + "Reviews";
-        if (input.title === 0 || input.review === 0) {
+        if (!title || !review) {
             alert("Fields cannot be left empty")
         } else {
             await fetch(url, {
                 method: 'PUT',
                 body: JSON.stringify({
-                    "title": input.title,
-                    "review": input.review,
+                    "title": title,
+                    "review": review,
                     "gameplay": input.gameplay,
                     "presentation": input.presentation,
                     "engagement": input.engagement,
@@ -68,14 +71,14 @@ export const EditReview = (props) => {
                     type="text"
                     id="title"
                     defaultValue={input.title}
-                    onChange={(e) => input.title = e.target.value}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
                 <label htmlFor="review">Review:</label>
                 <textarea 
                     type="text"
                     id="review-input"
                     defaultValue={input.review}
-                    onChange={(e) => input.review = e.target.value}
+                    onChange={(e) => setReview(e.target.value)}
                 />
                 <label htmlFor="gameplay">Gameplay:</label>
                 <input
