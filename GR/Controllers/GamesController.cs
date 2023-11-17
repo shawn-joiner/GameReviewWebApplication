@@ -11,11 +11,9 @@ namespace GR.Controllers
     public class GamesController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly IWebHostEnvironment _env;
-        public GamesController(IConfiguration configuration, IWebHostEnvironment env)
+        public GamesController(IConfiguration configuration)
         {
             _configuration = configuration;
-            _env = env;
         }
 
         [HttpGet]

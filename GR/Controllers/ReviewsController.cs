@@ -11,11 +11,9 @@ namespace GR.Controllers
     public class ReviewsController : ControllerBase
     {
         private readonly IConfiguration _configuration;
-        private readonly IWebHostEnvironment _env;
-        public ReviewsController(IConfiguration configuration, IWebHostEnvironment env)
+        public ReviewsController(IConfiguration configuration)
         {
             _configuration = configuration;
-            _env = env;
         }
 
         [HttpGet]

@@ -1,8 +1,6 @@
 import './App.css';
 import {Home} from './Home';
 import {About} from './About';
-import {Department} from './Department';
-import {Employee} from './Employee';
 import { GameBrowse } from './GameBrowse';
 import { ReviewBrowse } from './ReviewBrowse';
 import { GameView } from './components/GameView';
@@ -24,7 +22,7 @@ function App() {
     <BrowserRouter>
     <div className="App container">
       <h3 className="d-flex justify-content-center m-3">
-        React JS Frontend
+        Game Reviews
       </h3>
         
       <nav className="navbar navbar-expand-sm bg-light navbar-dark">
@@ -48,9 +46,6 @@ function App() {
             <NavLink className="btn btn-light btn-outline-primary" to="/about">
               About
             </NavLink>
-          </li>
-          <li>
-            {JSON.stringify(cookies["user"]) != null ? <p className="userName">{JSON.stringify(cookies["user"]).replaceAll('"', "").toUpperCase()}</p> : ""}
           </li>
         </ul>
 
@@ -78,8 +73,6 @@ function App() {
       <Routes>
         <Route path='/home' element={<Home />} />
         <Route path='/about' element={<About />} />
-        <Route path='/department' element={<Department/>}/>
-        <Route path='/employee' element={<Employee/>}/>
         <Route path ='/gamebrowse' element={<GameBrowse/>}/>
         <Route path='/gameview/:gameId' element={<GameView />} />
         <Route path='/profile/:userName' element={<Profile />} />
