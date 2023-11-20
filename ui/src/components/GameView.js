@@ -72,7 +72,7 @@ export const GameView = (props) => {
                         engagement = {rev.engagement}
                         difficulty = {rev.difficulty}
                         replayable = {rev.replayable}
-                        created = {rev.created}
+                        created = {dateConvert(rev.created)}
                     />
                 ))}
             </div>
