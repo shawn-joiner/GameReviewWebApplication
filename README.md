@@ -32,7 +32,7 @@ when writing a review is prompted for an overall text submission as well as a sc
    - Right-click Databases Folder and select New Database. Name it "TestDB" and then click ok.
    - Refresh
    - Right click TestDB and select new Query.
-   - Paste the contents of GRDBSeed into window and run query
+   - Paste the contents of GRDB Seed into window and run query
    - Press refresh and the tables we will need should be created
 
 
