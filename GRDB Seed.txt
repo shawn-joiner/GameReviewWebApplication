@@ -50,7 +50,7 @@ insert into games values
 		'2022-08-11', 'Nosebleed Interactive', 'Wired Productions', 'image_ArcadeParadise.jpg'),
 	(5, 'Battle Chasers: Nightware', 'Battle Chasers: Nightwar is an RPG inspired by the classic console greats, featuring deep dungeon diving, turn-based combat presented in a classic JRPG format, and a rich story driven by exploration of the world.',
 		'2017-10-03', 'Airship Syndicate', 'THQ Nordic', 'image_BattleChasers.jpg'),
-	(4, 'Evergarden', 'Battle Chasers: Nightwar is an RPG inspired by the classic console greats, featuring deep dungeon diving, turn-based combat presented in a classic JRPG format, and a rich story driven by exploration of the world.',
+	(4, 'Evergarden', 'You have just arrived in a magical forest world with a hexagon board at its center, a mysterious creature nearby, and secrets lurking in the shadows. Why are you here, and what will you do next? A deceptively simple puzzle game, wrapped in a magical adventure.',
 		'2018-08-16', 'Flippfly LLC', 'Flippfly LLC', 'image_Evergarden.jpg'),
 	(2, 'Grime', 'Destroy... Absorb... Grow... GRIME is a fast and unforgiving Action-Adventure RPG in which you crush your foes with living weapons that mutate form and function, and then consume their remains with a black hole to strengthen your vessel as you break apart a world of anatomical horror and intrigue.',
 		'2021-08-02', 'Clover Bite', 'Akapura Games', 'image_Grime.png'),
@@ -58,7 +58,7 @@ insert into games values
 		'2017-05-18', 'Borealys Games', 'Borealys Games', 'image_Mystralia.jpg'),
 	(7, 'Northgard', 'Northgard is a strategy game based on Norse mythology in which you control a clan of Vikings vying for the control of a mysterious newfound continent.',
 		'2018-03-07', 'Shiro Games', 'Shiro Unlimited', 'image_Northgard.jpg'),
-	(3, 'Spiritfarer', 'Northgard is a strategy game based on Norse mythology in which you control a clan of Vikings vying for the control of a mysterious newfound continent.',
+	(3, 'Spiritfarer', 'Spiritfarer® is a cozy management game about dying. As ferrymaster to the deceased, build a boat to explore the world, care for your spirit friends, and release them into the afterlife. The Spiritfarer Farewell Edition includes the heartwarming base game and three major content updates.',
 		'2020-08-18', 'Thunder Lotus Games', 'Thunder Lotus Games', 'image_Spiritfarer.jpg'),
 	(7, 'Terraforming Mars', 'The taming of the Red Planet has begun! Corporations are competing to transform Mars into a habitable planet by spending vast resources and using innovative technology to raise temperature, create a breathable atmosphere, and make oceans of water.',
 		'2018-10-17', 'Artefacts Studio', 'Twin Sails Interactive', 'image_Mars.jpg'),
@@ -68,5 +68,10 @@ insert into games values
 		'2018-05-29', 'Villa Gorilla', 'Team17 Digital Ltd', 'image_Yoku.jpg')
 		
 insert into reviews values (10, 1, 'A Brilliant New Take on Metroidvania', 'There are few things more satisfying in the gaming world than when a studio manages to take a common formula and put a successful twist on it to create something new. There have been previous attempts to add adventure elements to pinball, but
-	the combination of pinball and metroidvania work so perfectly with this game. The art style and theming of the game provide a solid, welcoming foundation for all audiences and only help to make this game an absolute gem of indie development', 8, 8, 6, 3, 9, default)
+	the combination of pinball and metroidvania work so perfectly with this game. The art style and theming of the game provide a solid, welcoming foundation for all audiences and only help to make this game an absolute gem of indie development', 8, 8, 6, 3, 9, default),
+	(10, 2, 'Adventure Pinball', 'I have played other attempts at creating an adventure pinball game and this surpasses all of them by far', 9, 6, 4, 2, 10, default),
+	(6, 1, 'New Strategy Rule Set', 'The addition of portioning off the map into different sections that each have their own maximum building limit provides an interesting twist to RTS', 6, 9, 7, 9, 9, default),
+	(3, 1, 'Calm Puzzle Game', 'This puzzle game provides a nice, calm puzzle experience, but it can be kind of boring sometimes', 3, 4, 5, 7, 3, default),
+	(7, 3, 'Great story', 'While this adventure game doesn't contain much action, the existential nature of the story revolving around helping people come to terms with and transition through death provides a solid experience', 4, 8, 10, 2, 2, default),
+	(2, 1, 'Ok JRPG', 'The art style and presentation of the game is fantastic. However, the battle system is poorly designed and results in an experience where it is mostly useless to use the character skills despite there being an abundance of them', 5, 10, 5, 8, 2, default)
 
